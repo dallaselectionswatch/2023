@@ -17,20 +17,22 @@
       }
       h2,
       h3 {
-        margin: 10px;
         font-size: 18px;
+        width: 600px;
+        margin-right: 10px;
       }
       h3 {
         font-size: 16px;
       }
-      form {
-	position: absolute;
+      fieldset {
+	    position: absolute;
         margin-top: 20px;
-	margin-left: 10px;
+	    margin-left: 10px;
       }
-      p {
-        margin: 10px;
-	height: 200px;
+      em, p {
+        margin-right: 10px;
+	    height: 100px;
+	    width: 400px;
       }
       .map-overlay {
         position: absolute;
@@ -41,6 +43,7 @@
         font-family: Arial, sans-serif;
         overflow: auto;
         border-radius: 3px;
+        width: 400px;
       }
       #map {
         position: absolute;
@@ -50,48 +53,89 @@
       }
       #features {
         top: 0;
-        height: 150px;
+        height: 90px;
         margin-top: 20px;
-        width: 250px;
-      }
-      #legend {
-        padding: 10px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        line-height: 18px;
-        height: 150px;
-        margin-bottom: 40px;
-        width: 200px;
-      }
-      .legend-key {
-        display: inline-block;
-        border-radius: 20%;
-        width: 20px;
-        height: 10px;
-        margin-right: 5px;
+        width: 400px;
       }
     </style>
   </head>
   <body>
     <div id="map"></div>
     <div class="map-overlay" id="features">
-      <h2>Dallas Campaign Contributions</h2>
+      <h2>2022 - 2023 Dallas Campaign Contributions</h2>
       <div id="pd"><p>Hover over a zipcode</p></div>
     </div>
-    <div class="map-overlay" id="legend"></div>
-    <script>
-        function displayPerCandidate() {
-                alert("candidates submitted")
-        }
-    </script>
-    <form id="menu" onsubmit="displayPerCandidate()">
-        <input type="radio" id="ChadWest" value="ChadWest">
-        <label for="ChadWest"> Chad West</label><br>
-        <input type="radio" id="EricJohnson" value="EricJohnson">
-        <label for="EricJohnson"> Eric Johnson</label><br>
-        <input type="submit" value="Submit">
-    </form>
+
+    <fieldset id="menuContainer" onchange="renderLayer()">
+
+    </fieldset>
 
     <script>
+      const toggleableLayerIds = ["ChadWest",
+        "EricJohnson",
+        "TennellAtkins",
+        "PaulRidley",
+        "AlbertMata",
+        "GayWillis",
+        "JaynieSchultz",
+        "CaraMendelsohn",
+        "PaulaBlackmon",
+        "OmarNarvaez",
+        "OkemaThomas",
+        "JamieResendez",
+        "KathyStewart",
+        "MonicaRAlonzo",
+        "JesusMoreno",
+        "AndreTurner",
+        "AdamBazaldua",
+        "CarolynArnold",
+        "BrianHasenbauer"]
+
+      const layerIdToCandidateName = {}
+
+      for (id in toggleableLayerIds) {
+        key = toggleableLayerIds[id]
+        value = key.split(/(?=[A-Z])/).join(" ")
+
+        layerIdToCandidateName[key] = value
+      }
+      var menuElement = document.createElement("select");
+      menuElement.onchange = "renderLayer()"
+      menuElement.id = "layer"
+
+      var defaultOption = document.createElement("option");
+      var defaultPrompt = "---Select a Candidate---"
+      defaultOption.style = "display:none"
+      defaultOption.text = defaultPrompt
+      menuElement.appendChild(defaultOption)
+
+      var promptLabel = document.createElement("label")
+      promptLabel.for = "menu"
+      promptLabel.innerHTML = "Select a Candidate"
+
+      document.getElementById("menuContainer").appendChild(menuElement)
+      menuElement.appendChild(promptLabel)
+
+      for (x in toggleableLayerIds) {
+        var option = document.createElement("option");
+        option.text = toggleableLayerIds[x]
+        option.id = toggleableLayerIds[x]
+        option.value = toggleableLayerIds[x]
+        menuElement.add(option);
+      }
+
+      function vanishAllLayers() {
+        for (x in toggleableLayerIds) {
+          map.setLayoutProperty(toggleableLayerIds[x], 'visibility', 'none')
+        }
+      }
+
+      function renderLayer() {
+        const layer = document.getElementById('layer');
+        vanishAllLayers()
+        map.setLayoutProperty(layer.value, 'visibility', 'visible')
+      }
+
       // define access token
       mapboxgl.accessToken = 'pk.eyJ1IjoiaW1lcmNhZG8iLCJhIjoiY2xlcm1mZmxkMGNpMjN0cXRhOG5jNGxwaiJ9.rh22X-B5Eazk2f8AH11LLg';
 
@@ -105,80 +149,30 @@
       map.on('load', () => {
         // make a pointer cursor
         map.getCanvas().style.cursor = 'default';
-
+        map.setPitch(60)
         // set map bounds to TX
         map.fitBounds([
-          [-102.223219, 28.945174],
-          [-91.655590, 36.548946]
-        ]);
-
-        // define layer names
-        const layers = [
-          '$0-$250',
-          '$251-$500',
-          '$501-$1000',
-          '$1001-$2000',
-          '$2001-$10000',
-          '$10001-$25000',
-          '$25001-$50000',
-          '$50000+'
-        ];
-        const colors = [
-          '#e5c1f0',
-          '#d483d0',
-          '#d574bb',
-          '#d465a4',
-          '#d1578d',
-          '#ca4a76',
-          '#c23f5f',
-          '#b73648'
-        ];
-
-        // create legend
-        const legend = document.getElementById('legend');
-
-        layers.forEach((layer, i) => {
-          const color = colors[i];
-          const item = document.createElement('div');
-          const key = document.createElement('span');
-          key.className = 'legend-key';
-          key.style.backgroundColor = color;
-
-          const value = document.createElement('span');
-          value.innerHTML = `${layer}`;
-          item.appendChild(key);
-          item.appendChild(value);
-          legend.appendChild(item);
-        });
-
-        // change layer on mouseclick
-        map.on('click', (event) => {
-            console.log("clicked")
-
-            if (document.getElementById("ChadWest").checked) {
-              console.log("chad clicked")
-              map.setLayoutProperty('EricJohnson', 'visibility', 'none')
-              map.setLayoutProperty('ChadWest', 'visibility', 'visible')
-            } else if (document.getElementById("EricJohnson").checked) {
-              console.log("eric clicked")
-              map.setLayoutProperty('EricJohnson', 'visibility', 'visible')
-              map.setLayoutProperty('ChadWest', 'visibility', 'none')
-            } else {
-              console.log("nobody")
-            }
-            //map.setLayoutProperty('EricJohnson', 'visibility', 'visible')
-        });
-
-
+          [33.439,-96.188],
+          [31.066,-97.751]
+      ]);
 
         // change info window on hover
         map.on('mousemove', (event) => {
-            const zipcodes = map.queryRenderedFeatures(event.point, {
-                layers: ['ChadWest']
-            });
-            document.getElementById('pd').innerHTML = zipcodes.length
-            ? `<h3>Total Contributions ${zipcodes[0].properties["ZCTA5CE10"]}</h3><p><strong><em>$${zipcodes[0].properties["Chad West"]}</strong> donated in 2022-2023</em></p>`
-            : `<p>Hover over a zipcode!</p>`;
+            layerId = document.getElementById('layer').value
+            if (layerId != defaultPrompt){
+              const zipcodes = map.queryRenderedFeatures(event.point, {
+                  layers: [layerId]
+              });
+              document.getElementById('pd').innerHTML = zipcodes.length
+              ? `<h3> </h3>
+                  <p>
+                    ${zipcodes[0].properties["ZCTA5CE10"]} donated
+                    <strong>
+                    <em> $${zipcodes[0].properties[layerIdToCandidateName[layerId]]}</strong>to ${layerIdToCandidateName[layerId]}'s campaign
+                    </em>
+                  </p>`
+              : `<p>Hover over a zipcode!</p>`;
+            }
         });
       });
     </script>
