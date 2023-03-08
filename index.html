@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
 
-    <script>
-        function displayPerCandidate() {
-                alert("candidates submitted")
-        }
-    </script>
     <link
       href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css"
       rel="stylesheet"
@@ -83,13 +78,16 @@
       <div id="pd"><p>Hover over a zipcode</p></div>
     </div>
     <div class="map-overlay" id="legend"></div>
+    <script>
+        function displayPerCandidate() {
+                alert("candidates submitted")
+        }
+    </script>
     <form id="menu" onsubmit="displayPerCandidate()">
-        <input type="checkbox" id="ChadWest" value="Chad West">
+        <input type="radio" id="ChadWest" value="ChadWest">
         <label for="ChadWest"> Chad West</label><br>
-        <input type="checkbox" id="EricJohnson" value="Eric Johnson">
+        <input type="radio" id="EricJohnson" value="EricJohnson">
         <label for="EricJohnson"> Eric Johnson</label><br>
-        <input type="checkbox" id="PaulaBlackmon" value="Paula Blackmon">
-        <label for="PaulaBlackmon"> Paula Blackmon</label><br><br>
         <input type="submit" value="Submit">
     </form>
 
@@ -100,7 +98,7 @@
       // create map
       const map = new mapboxgl.Map({
         container: 'map', // container id
-        style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg' // map style URL from Mapbox Studio
+        style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft'
       });
 
       // wait for map to load before adjusting it
@@ -108,10 +106,10 @@
         // make a pointer cursor
         map.getCanvas().style.cursor = 'default';
 
-        // set map bounds to the continental US
+        // set map bounds to TX
         map.fitBounds([
-          [-133.2421875, 16.972741],
-          [-47.63671875, 52.696361]
+          [-102.223219, 28.945174],
+          [-91.655590, 36.548946]
         ]);
 
         // define layer names
@@ -126,7 +124,7 @@
           '$50000+'
         ];
         const colors = [
-          '#d192e5',
+          '#e5c1f0',
           '#d483d0',
           '#d574bb',
           '#d465a4',
@@ -153,12 +151,33 @@
           legend.appendChild(item);
         });
 
+        // change layer on mouseclick
+        map.on('click', (event) => {
+            console.log("clicked")
+
+            if (document.getElementById("ChadWest").checked) {
+              console.log("chad clicked")
+              map.setLayoutProperty('EricJohnson', 'visibility', 'none')
+              map.setLayoutProperty('ChadWest', 'visibility', 'visible')
+            } else if (document.getElementById("EricJohnson").checked) {
+              console.log("eric clicked")
+              map.setLayoutProperty('EricJohnson', 'visibility', 'visible')
+              map.setLayoutProperty('ChadWest', 'visibility', 'none')
+            } else {
+              console.log("nobody")
+            }
+            //map.setLayoutProperty('EricJohnson', 'visibility', 'visible')
+        });
+
+
+
         // change info window on hover
         map.on('mousemove', (event) => {
-          const zipcodes = map.queryRenderedFeatures(event.point, {
-            layers: ['zipcodedata']
-          });
-          document.getElementById('pd').innerHTML = zipcodes.length ? `<h3>Total Contributions</h3><p><strong><em>$${zipcodes[0].properties["Total Contributions"]}</strong> </em></p>`
+            const zipcodes = map.queryRenderedFeatures(event.point, {
+                layers: ['ChadWest']
+            });
+            document.getElementById('pd').innerHTML = zipcodes.length
+            ? `<h3>Total Contributions ${zipcodes[0].properties["ZCTA5CE10"]}</h3><p><strong><em>$${zipcodes[0].properties["Chad West"]}</strong> donated in 2022-2023</em></p>`
             : `<p>Hover over a zipcode!</p>`;
         });
       });
