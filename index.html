@@ -20,6 +20,7 @@
         font-size: 18px;
         width: 600px;
         margin-right: 10px;
+        margin-left: 10px;
       }
       h3 {
         font-size: 16px;
@@ -33,17 +34,19 @@
         margin-right: 10px;
 	    height: 100px;
 	    width: 400px;
+	    margin-left: 10px;
       }
       .map-overlay {
         position: absolute;
         bottom: 0;
         right: 0;
-        background: #fff;
+        background: #e6ffe6;
         margin-right: 20px;
         font-family: Arial, sans-serif;
         overflow: auto;
         border-radius: 3px;
         width: 400px;
+        border:1px solid black;
       }
       #map {
         position: absolute;
@@ -63,7 +66,7 @@
     <div id="map"></div>
     <div class="map-overlay" id="features">
       <h2>2022 - 2023 Dallas Campaign Contributions</h2>
-      <div id="pd"><p>Hover over a zipcode</p></div>
+      <div id="pd" margin-left="10px"><p>Hover over a zipcode</p></div>
     </div>
 
     <fieldset id="menuContainer" onchange="renderLayer()">
@@ -151,8 +154,8 @@
         map.getCanvas().style.cursor = 'default';
         // set map bounds to TX
         map.fitBounds([
-          [-102.223219, 28.945174],
-          [-91.655590, 36.548946]
+          [-96.233707, 33.484057],
+          [-97.451878, 32.288442]
       ]);
 
         // change info window on hover
