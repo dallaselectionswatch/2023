@@ -74,6 +74,7 @@
     </fieldset>
 
     <script>
+      // corresponds to layer ID found on MapboxGL
       const toggleableLayerIds = ["ChadWest",
         "EricJohnson",
         "TennellAtkins",
@@ -94,6 +95,10 @@
         "CarolynArnold",
         "BrianHasenbauer"]
 
+      /*
+       key - layerID
+       value - candidate name
+       */
       const layerIdToCandidateName = {}
 
       for (id in toggleableLayerIds) {
@@ -102,10 +107,13 @@
 
         layerIdToCandidateName[key] = value
       }
+
+      // create dropdown element
       var menuElement = document.createElement("select");
       menuElement.onchange = "renderLayer()"
       menuElement.id = "layer"
 
+      // set a default prompt for dropdown
       var defaultOption = document.createElement("option");
       var defaultPrompt = "---Select a Candidate---"
       defaultOption.style = "display:none"
@@ -115,10 +123,10 @@
       var promptLabel = document.createElement("label")
       promptLabel.for = "menu"
       promptLabel.innerHTML = "Select a Candidate"
-
       document.getElementById("menuContainer").appendChild(menuElement)
       menuElement.appendChild(promptLabel)
 
+      // add each candidate to dropdown element
       for (x in toggleableLayerIds) {
         var option = document.createElement("option");
         option.text = toggleableLayerIds[x]
@@ -127,12 +135,14 @@
         menuElement.add(option);
       }
 
+      // clear the map of all layers
       function vanishAllLayers() {
         for (x in toggleableLayerIds) {
           map.setLayoutProperty(toggleableLayerIds[x], 'visibility', 'none')
         }
       }
 
+      // make selected candidate layer visible
       function renderLayer() {
         const layer = document.getElementById('layer');
         vanishAllLayers()
@@ -158,13 +168,18 @@
           [-97.451878, 32.288442]
       ]);
 
-        // change info window on hover
+        // if mouse hovers over a zipcode, display their total contributions for the selected candidate
         map.on('mousemove', (event) => {
             layerId = document.getElementById('layer').value
             if (layerId != defaultPrompt){
               const zipcodes = map.queryRenderedFeatures(event.point, {
                   layers: [layerId]
               });
+
+              /*
+              ZCTA5CE10 - property in GeoJSON object that stores the corresponding zipcode
+              candidate name - property in GeoJSON object that stores the total contributions from that zipcode
+              */
               document.getElementById('pd').innerHTML = zipcodes.length
               ? `<h3> </h3>
                   <p>
