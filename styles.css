@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+h2,h3 {
+    font-size: 18px;
+    width: 600px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+h3 {
+    font-size: 16px;
+}
+fieldset {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+em, p {
+    margin-right: 10px;
+    height: 100px;
+    width: 400px;
+    margin-left: 10px;
+}
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #e6ffe6;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+    width: 400px;
+    border:1px solid black;
+}
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+#features {
+    top: 0;
+    height: 90px;
+    margin-top: 20px;
+    width: 400px;
+}
