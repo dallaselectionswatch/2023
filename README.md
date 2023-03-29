@@ -3,11 +3,11 @@
 **GeoJSON Script Author:** I. Mercado  
 **Financial Report Cleaning:** I. Mercado  
 **Financial Report Analysis, Charts, and Graphs:** I. Mercado  
-**Mapbox Styling:** I. Mercado and H. Rodriguez  
+**Mapbox Styling:** I. Mercado, H. Rodriguez, and H. Fitch
 
-## Aerial View of Texas Contributions for Paula Blackmon  ##
-![](AerialTexas.png?raw=true "Aerial Texas Image")
+## Pitched View of Texas Contributions for Chad West  ##
+![](Visuals/ChadWest3D.png?raw=true "Aerial Texas Image")
 
 ## Pitched Surface View of Dallas for Eric Johnson ##
-![](PitchedFromSurfaceOfDallas.png?raw=true "Dallas Texas Pitched  Image")
+![](Visuals/EricJohnson3D.png?raw=true "Dallas Texas Pitched  Image")
 

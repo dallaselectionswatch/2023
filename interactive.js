@@ -1,11 +1,20 @@
-// corresponds to layer ID found on MapboxGL
+/*
+    This file renders and manages the interactive elements of a mapbox fill-extrusion display
+    The map corresponds to donations made to candidates for council positions in Dallas for the May 2023 election
+*/
+
+
 
 // define access token
 mapboxgl.accessToken = 'pk.eyJ1IjoiaW1lcmNhZG8iLCJhIjoiY2xlcm1mZmxkMGNpMjN0cXRhOG5jNGxwaiJ9.rh22X-B5Eazk2f8AH11LLg';
 
 // property key that stores zipcode in GeoJSON
-zipcode_property_key = "ZCTA5CE10"
+ZIPCODE_PROPERTY_KEY = "ZCTA5CE10"
 
+FILL_OPACITY = 0.85
+MAX_ZIPCODE_CONTRIBUTION = 85000
+
+// corresponds to layer ID found on MapboxGL
 const toggleableLayerIds = [
     "ChadWest",
     "EricJohnson",
@@ -26,6 +35,27 @@ const toggleableLayerIds = [
     "CarolynArnold",
     "BrianHasenbauer"]
 
+candidateToMaxContribution = {
+    "Chad West" : 23490,
+    "Tennell Atkins" : 2000,
+    "Adam Bazaldua" : 5300,
+    "Paula Blackmon" : 23225,
+    "Eric Johnson" : 75400,
+    "Kathy Stewart" : 16700,
+    "Jesus Moreno" : 4000,
+    "Cara Mendelsohn" : 8000,
+    "Omar Narvaez" : 4000,
+    "Gay Willis" : 5930,
+    "Jaynie Schultz" : 3880,
+    "Brian Hasenbauer": 602,
+    "Jaime Resendez" : 2000,
+    "Paul Ridley" : 3500,
+    "Okema Thomas" : 6000,
+    "Monica R Alonzo" : 4000,
+    "Carolyn Arnold" : 1000,
+    "Albert Mata" : 1450
+}
+
 /*
 key - layerID
 value - candidate name
@@ -45,7 +75,7 @@ menuElement.id = "layer"
 
 // set a default prompt for dropdown
 var defaultOption = document.createElement("option");
-var defaultPrompt = "---Select a Candidate---"
+var defaultPrompt = "Candidate"
 defaultOption.style = "display:none"
 defaultOption.text = defaultPrompt
 menuElement.appendChild(defaultOption)
@@ -58,11 +88,11 @@ menuElement.appendChild(promptLabel)
 
 // add each candidate to dropdown element
 for (x in toggleableLayerIds) {
-var option = document.createElement("option");
-option.text = toggleableLayerIds[x]
-option.id = toggleableLayerIds[x]
-option.value = toggleableLayerIds[x]
-menuElement.add(option);
+    var option = document.createElement("option");
+    option.text = layerIdToCandidateName[toggleableLayerIds[x]]
+    option.id = toggleableLayerIds[x]
+    option.value = toggleableLayerIds[x]
+    menuElement.add(option);
 }
 
 // clear the map of all layers
@@ -79,6 +109,12 @@ function renderLayer() {
     vanishAllLayers()
     map.setLayoutProperty(layer.value, 'visibility', 'visible')
     candidateName = layerIdToCandidateName[layer.value]
+
+    /*
+        R = G = 255 - 200 * contribution / maxContribution
+        B = 255
+        A = Opacity
+    */
     color_gradient =
     [
       "case",
@@ -90,7 +126,7 @@ function renderLayer() {
       "#f5f1f0",
       ["has", candidateName],
       [
-        "rgb",
+        "rgba",
         [
           "-",
           200,
@@ -101,7 +137,7 @@ function renderLayer() {
               200,
               ["get", candidateName]
             ],
-            24000
+            candidateToMaxContribution[candidateName]
           ]
         ],
         [
@@ -114,15 +150,15 @@ function renderLayer() {
               200,
               ["get", candidateName]
             ],
-            24000
+            candidateToMaxContribution[candidateName]
           ]
         ],
-        255
+        255,
+        0.9
       ],
       "#ffd2c1"
     ]
     map.setPaintProperty(layer.value, 'fill-extrusion-color', color_gradient)
-    map.setPaintProperty(layer.value, 'raster-opacity', 0.8)
 }
 
 
@@ -156,12 +192,10 @@ map.on('load', () => {
           document.getElementById('pd').innerHTML = zipcodes.length
           ? `<h3> </h3>
               <p>
-                ${zipcodes[0].properties[zipcode_property_key]} donated
+                ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
                 <strong>
-                <em>
                     $${zipcodes[0].properties[layerIdToCandidateName[layerId]]}
                 </strong>to ${layerIdToCandidateName[layerId]}'s campaign
-                </em>
               </p>`
           : `<p>Hover over a zipcode!</p>`;
         }

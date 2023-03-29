@@ -4,35 +4,37 @@ body {
 }
 h2,h3 {
     font-size: 18px;
-    width: 600px;
-    margin-right: 10px;
-    margin-left: 10px;
+    width: 150px;
+    overflow-wrap: break-word;
+    color: #2e2f8d;
+    margin-left: 20px;
+    justify-content: center;
 }
 h3 {
     font-size: 16px;
+    overflow-wrap: break-word;
+    color: #2e2f8d;
+    margin-left: 10px;
+    justify-content: center;
 }
 fieldset {
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 10px;
+    position: relative;
+    width: 100px;
+    margin-left: 20px;
 }
 em, p {
-    margin-right: 10px;
-    height: 100px;
-    width: 400px;
-    margin-left: 10px;
+    height: 50px;
+    width: 150px;
+    overflow-wrap: break-word;
+    margin-left: 20px;
+    font-size: 14px;
 }
 .map-overlay {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #e6ffe6;
-    margin-right: 20px;
-    font-family: Arial, sans-serif;
+    background: white;
     overflow: auto;
-    border-radius: 3px;
-    width: 400px;
-    border:1px solid black;
+    border:4px;
+    border-style: solid;
 }
 #map {
     position: absolute;
@@ -40,9 +42,40 @@ em, p {
     bottom: 0;
     width: 100%;
 }
+legend{
+    color: #eb7626;
+    font-size: 14px;
+}
+select {
+    color: #2e2f8d;
+}
 #features {
-    top: 0;
-    height: 90px;
-    margin-top: 20px;
-    width: 400px;
+    height: 250px;
+    width: 200px;
+    opacity: 1;
+    margin-left: 20px;
+    border-color: #2e2f8d;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 10px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 25px;
+  height: 2.5rem;
+}
+#source {
+    width: 200px;
+    font-size: 10px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+*{
+    margin-top: 10px;
+    word-wrap: break-word;
+    font-family: 'Amazon Ember', sans-serif;
+    text-align: center;
 }
