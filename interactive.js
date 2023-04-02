@@ -15,6 +15,7 @@ FILL_OPACITY = 0.85
 MAX_ZIPCODE_CONTRIBUTION = 85000
 
 // corresponds to layer ID found on MapboxGL
+/*
 const toggleableLayerIds = [
     "ChadWest",
     "EricJohnson",
@@ -34,9 +35,16 @@ const toggleableLayerIds = [
     "AdamBazaldua",
     "CarolynArnold",
     "BrianHasenbauer"]
+*/
+const toggleableLayerIds = [
+    "ChadWest",
+    "MonicaRAlonzo",
+    "AlbertMata",
+    "MarianaGriggs",
+]
 
 candidateToMaxContribution = {
-    "Chad West" : 23490,
+    "Chad West" : 36228,
     "Tennell Atkins" : 2000,
     "Adam Bazaldua" : 5300,
     "Paula Blackmon" : 23225,
@@ -51,9 +59,9 @@ candidateToMaxContribution = {
     "Jaime Resendez" : 2000,
     "Paul Ridley" : 3500,
     "Okema Thomas" : 6000,
-    "Monica R Alonzo" : 4000,
+    "Monica R Alonzo" : 6000,
     "Carolyn Arnold" : 1000,
-    "Albert Mata" : 1450
+    "Albert Mata" : 2000
 }
 
 /*
@@ -98,10 +106,11 @@ for (x in toggleableLayerIds) {
 // clear the map of all layers
 function vanishAllLayers() {
     for (x in toggleableLayerIds) {
-      map.setLayoutProperty(toggleableLayerIds[x], 'visibility', 'none')
+        if(x != "MarianaGriggs"){
+            map.setLayoutProperty(toggleableLayerIds[x], 'visibility', 'none')
+        }
     }
 }
-
 
 // make selected candidate layer visible
 function renderLayer() {
@@ -189,15 +198,23 @@ map.on('load', () => {
           ZCTA5CE10 - property in GeoJSON object that stores the corresponding zipcode
           candidate name - property in GeoJSON object that stores the total contributions from that zipcode
           */
-          document.getElementById('pd').innerHTML = zipcodes.length
-          ? `<h3> </h3>
-              <p>
-                ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
-                <strong>
-                    $${zipcodes[0].properties[layerIdToCandidateName[layerId]]}
-                </strong>to ${layerIdToCandidateName[layerId]}'s campaign
-              </p>`
-          : `<p>Hover over a zipcode!</p>`;
+          if (layerIdToCandidateName[layerId] == "Mariana Griggs") {
+            console.log(layerIdToCandidateName[layerId])
+            document.getElementById('pd').innerHTML =`<p>This candidate has not submitted campaign finance records to
+             <a href="https://campfin.dallascityhall.com/">Dallas City Hall CampFin</a></p></p>`;
+          }
+          else {
+            document.getElementById('pd').innerHTML = zipcodes.length
+              ? `<h3> </h3>
+                  <p>
+                    ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
+                    <strong>
+                        $${zipcodes[0].properties[layerIdToCandidateName[layerId]]}
+                    </strong>to ${layerIdToCandidateName[layerId]}'s campaign
+                  </p>`
+              : `<p>Hover over a zipcode!</p>`;
+          }
+
         }
     });
 });
