@@ -13,7 +13,10 @@
     <div id="map"></div>
     <div class="map-overlay" id="features">
       <h2>2022 - 2023 Dallas Campaign Contributions</h2>
-      <fieldset id="menuContainer" onchange="renderLayer()">
+      <fieldset id="districtContainer" onchange="renderCandidateMenu()">
+        <legend>Select a District</legend>
+      </fieldset>
+      <fieldset id="candidateContainer" onchange="renderLayer()">
         <legend>Select a Candidate</legend>
       </fieldset>
       <div id="pd"><p>Hover over a zipcode</p></div>
@@ -22,6 +25,7 @@
     <script src="interactive.js"></script>
   </body>
   <footer>
+    <img src="CouncilDistrictMap.jpg">
     <p id="source">Authors: R. Wilson, H. Fitch, and I. Mercado<br>
     <a href="https://campfin.dallascityhall.com/">Source: Dallas CampFin</a></p>
   </footer>

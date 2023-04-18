@@ -14,22 +14,26 @@ ZIPCODE_PROPERTY_KEY = "ZCTA5CE10"
 FILL_OPACITY = 0.85
 MAX_ZIPCODE_CONTRIBUTION = 85000
 
-const district_ballot = {
- "District 1" : ["Chad West", "Albert Mata", "Felix Mariana Griggs"],
- "District 2" : ["Jesus Moreno", "Sukhbir Kaur"],
- "District 3" : ["John Sims", "Joe Tave", "Zarin Gracey", "August Doyle", "Denise Benavides"],
- "District 4" : ["Carolyn King Arnold", "Jamie Smith"],
- "District 5" : ["Terry Perkins", "Jaime Resendez", "Yolanda Faye Williams"],
- "District 6" : ["Tony Carrillo", "Omar Narvaez", "Sidney Robles Martinez", "Monica R Alonzo"],
- "District 7" : ["Tracy Dotie Hill", "Adam Bazaldua", "Marvin E Crenshaw", "Okema Thomas"],
- "District 8" : ["Subrina Lynn Brenham", "Davante \"Shawt\" Peters", "Tennell Atkins"],
- "District 9" : ["Kendra Denise Madison", "Paula Blackmon"],
- "District 10" : ["Kathy Stewart", "Brian Hasenbauer", "Sirrano Keith Baldeo", "Chris Carter"],
- "District 11" : ["Jaynie Schultz", "Candace Evans"],
- "District 12" : ["Cara Mendelsohn"],
- "District 13" : ["Gay Donnell Willis", "Priscilla Shacklett"],
- "District 14" : ["Joseph F. Miller", "Amanda Schulz", "Paul E. Ridley"]
-}
+/*
+    candidate names must match those of labelIDs in mapbox
+    candidates who do not have campFin data render an info box instead of campFin data
+*/
+const district_ballot = new Map([
+ ["District 1" , ["ChadWest", "AlbertMata", "FelixGriggs"]],
+ ["District 2" , ["JesusMoreno", "SukhbirKaur"]],
+ ["District 3" , ["JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides"]],
+ ["District 4" , ["CarolynArnold", "JamieSmith"]],
+ ["District 5" , ["TerryPerkins", "JaimeResendez", "YolandaWilliams"]],
+ ["District 6" , ["TonyCarrillo", "OmarNarvaez", "SidneyRoblesMartinez", "MonicaRAlonzo"]],
+ ["District 7" , ["TracyDotieHill", "AdamBazaldua", "MarvinECrenshaw", "OkemaThomas"]],
+ ["District 8" , ["SubrinaLynnBrenham", "Davante\"Shawt\"Peters", "TennellAtkins"]],
+ ["District 9" , ["KendraMadison", "PaulaBlackmon"]],
+ ["District 10" , ["KathyStewart", "BrianHasenbauer", "SirranoKeithBaldeo", "ChrisCarter"]],
+ ["District 11" , ["JaynieSchultz", "CandyEvans"]],
+ ["District 12" , ["CaraMendelsohn"]],
+ ["District 13" , ["GayWillis", "PriscillaShacklett"]],
+ ["District 14" , ["JosephF.Miller", "AmandaSchulz", "PaulRidley"]]
+])
 
 // corresponds to layer ID found on MapboxGL
 const toggleableLayerIds = [
@@ -116,43 +120,66 @@ candidateToMaxContribution = {
     "Kendal Richardson" : 20
 }
 
-/*
-key - layerID
-value - candidate name
-*/
-const layerIdToCandidateName = {}
-for (id in toggleableLayerIds) {
-    key = toggleableLayerIds[id]
-    // Put a space between every capital letter
-    value = key.split(/(?=[A-Z])/).join(" ")
-    layerIdToCandidateName[key] = value
+function splitByCapitalLetter(name) {
+    return name.split(/(?=[A-Z])/).join(" ")
 }
 
 // create dropdown element to display the candidates
-var candidateMenu = document.createElement("select");
-candidateMenu.onchange = "renderLayer()"
-candidateMenu.id = "layer"
+var district_menu = document.createElement("select");
+district_menu.onchange = "renderCandidateMenu()"
+district_menu.id = "district"
 
 // set a default prompt for dropdown
-var defaultOption = document.createElement("option");
-var defaultPrompt = "Candidate"
-defaultOption.text = defaultPrompt
-candidateMenu.appendChild(defaultOption)
+var defaultDistrict = document.createElement("option");
+var defaultDistrictPrompt = "District"
+defaultDistrict.text = defaultDistrictPrompt
+district_menu.appendChild(defaultDistrict)
+document.getElementById("districtContainer").appendChild(district_menu)
 
-var promptLabel = document.createElement("label")
-promptLabel.for = "menu"
-promptLabel.innerHTML = "Select a Candidate"
-document.getElementById("menuContainer").appendChild(candidateMenu)
-candidateMenu.appendChild(promptLabel)
-
-// add each candidate to dropdown element
-for (x in toggleableLayerIds) {
+district_ballot.forEach((_value, key) => {
     var option = document.createElement("option");
-    option.text = layerIdToCandidateName[toggleableLayerIds[x]]
-    option.id = toggleableLayerIds[x]
-    option.value = toggleableLayerIds[x]
-    candidateMenu.add(option);
+    option.text = key
+    option.id = key
+    option.value = key
+    district_menu.add(option);
+})
+
+function renderCandidateMenu(){
+    const district = document.getElementById('district');
+    const candidates = district_ballot.get(district.value)
+    // create dropdown element to display the candidates
+    var candidateMenu
+    if (document.getElementById("layer")) {
+        candidateMenu = document.getElementById("layer")
+        document.getElementById('layer').options.length = 0;
+    } else{
+        candidateMenu = document.createElement("select");
+        candidateMenu.onchange = "renderLayer()"
+        candidateMenu.id = "layer"
+    }
+
+
+    // set a default prompt for dropdown
+    var defaultOption = document.createElement("option");
+    defaultOption.text = "Candidate"
+    candidateMenu.appendChild(defaultOption)
+
+    var promptLabel = document.createElement("label")
+    promptLabel.for = "menu"
+    document.getElementById("candidateContainer").appendChild(candidateMenu)
+    candidateMenu.appendChild(promptLabel)
+
+    // add each candidate to dropdown element
+    for (x in candidates) {
+        var option = document.createElement("option");
+        option.text = splitByCapitalLetter(candidates[x])
+        option.id = candidates[x]
+        option.value = candidates[x]
+        candidateMenu.add(option);
+    }
 }
+
+
 
 // clear the map of all layers
 function vanishAllLayers() {
@@ -165,58 +192,61 @@ function vanishAllLayers() {
 function renderLayer() {
     const layer = document.getElementById('layer');
     vanishAllLayers()
-    map.setLayoutProperty(layer.value, 'visibility', 'visible')
-    candidateName = layerIdToCandidateName[layer.value]
+    // check if selected candidate has an existing layer
+    if (toggleableLayerIds.includes(layer.value)) {
+        map.setLayoutProperty(layer.value, 'visibility', 'visible')
+        candidateName = splitByCapitalLetter(layer.value)
 
-    /*
-        R = G = 255 - 200 * contribution / maxContribution
-        B = 255
-        A = Opacity
-    */
-    color_gradient =
-    [
-      "case",
-      [
-        "==",
-        ["get", candidateName],
-        0
-      ],
-      "#f5f1f0",
-      ["has", candidateName],
-      [
-        "rgba",
+        /*
+            R = G = 255 - 200 * contribution / maxContribution
+            B = 255
+            A = Opacity
+        */
+        color_gradient =
         [
-          "-",
-          200,
+          "case",
           [
-            "/",
-            [
-              "*",
-              200,
-              ["get", candidateName]
-            ],
-            candidateToMaxContribution[candidateName]
-          ]
-        ],
-        [
-          "-",
-          255,
+            "==",
+            ["get", candidateName],
+            0
+          ],
+          "#f5f1f0",
+          ["has", candidateName],
           [
-            "/",
+            "rgba",
             [
-              "*",
+              "-",
               200,
-              ["get", candidateName]
+              [
+                "/",
+                [
+                  "*",
+                  200,
+                  ["get", candidateName]
+                ],
+                candidateToMaxContribution[candidateName]
+              ]
             ],
-            candidateToMaxContribution[candidateName]
-          ]
-        ],
-        255,
-        0.9
-      ],
-      "#ffd2c1"
-    ]
-    map.setPaintProperty(layer.value, 'fill-extrusion-color', color_gradient)
+            [
+              "-",
+              255,
+              [
+                "/",
+                [
+                  "*",
+                  200,
+                  ["get", candidateName]
+                ],
+                candidateToMaxContribution[candidateName]
+              ]
+            ],
+            255,
+            0.9
+          ],
+          "#ffd2c1"
+        ]
+        map.setPaintProperty(layer.value, 'fill-extrusion-color', color_gradient)
+    }
 }
 
 
@@ -224,7 +254,7 @@ function renderLayer() {
 const map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
-    pitch: 70,
+    pitch: 20,
     bearing: 0,
     center: [-97.010, 32.800],
     zoom: 9.7
@@ -237,23 +267,30 @@ map.on('load', () => {
 
     // if mouse hovers over a zipcode, display their total contributions for the selected candidate
     map.on('mousemove', (event) => {
-        layerId = document.getElementById('layer').value
-        if (layerId != defaultPrompt){
-          const zipcodes = map.queryRenderedFeatures(event.point, {
-              layers: [layerId]
-          });
+        layer = document.getElementById('layer')
+        if (layer) {
+            layerId = layer.value
+            if (toggleableLayerIds.includes(layerId)){
 
-          document.getElementById('pd').innerHTML = zipcodes.length ?
-            `<h3> </h3>
-                  <p>
-                    ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
-                    <strong>
-                        $${zipcodes[0].properties[layerIdToCandidateName[layerId]]}
-                    </strong>to ${layerIdToCandidateName[layerId]}'s campaign
-                  </p>`:
-            `<p>Hover over a zipcode!</p>`;
+              const zipcodes = map.queryRenderedFeatures(event.point, {
+                  layers: [layerId]
+              });
 
-
+              document.getElementById('pd').innerHTML = zipcodes.length ?
+                `<h3> </h3>
+                      <p>
+                        ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
+                        <strong>
+                            $${zipcodes[0].properties[splitByCapitalLetter(layerId)]}
+                        </strong>to ${splitByCapitalLetter(layerId)}'s campaign
+                      </p>`:
+                `<p>Hover over a zipcode!</p>`;
+            } else {
+                document.getElementById('pd').innerHTML = `<p>This candidate did not submit campaign finance records to
+                    <a href="https://campfin.dallascityhall.com/">Dallas City Hall</a>
+                </p>`
+            }
         }
+
     });
 });
