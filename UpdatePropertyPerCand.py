@@ -3,13 +3,14 @@ import json
 import pandas as pd
 import numpy as np
 
-zips_candContributions_filename = 'FullZipPerCandidate.xlsx'
+zips_candContributions_filename = '2023DallasCampFin.xlsx'
+sheet = 'TexasZipAmountPerCand'
 geoJSON_filename = 'texas-zip-codes-_1613.geojson'
 
 """
 Zipcode ; Amount ; Candidate
 """
-zips_contributions_df = pd.read_excel(zips_candContributions_filename)
+zips_contributions_df = pd.read_excel(zips_candContributions_filename, sheet_name = sheet, na_values=['NA'])
 
 zips_contributions_df = zips_contributions_df.set_index('Zipcode')
 

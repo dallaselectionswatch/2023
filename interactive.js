@@ -14,54 +14,106 @@ ZIPCODE_PROPERTY_KEY = "ZCTA5CE10"
 FILL_OPACITY = 0.85
 MAX_ZIPCODE_CONTRIBUTION = 85000
 
+const district_ballot = {
+ "District 1" : ["Chad West", "Albert Mata", "Felix Mariana Griggs"],
+ "District 2" : ["Jesus Moreno", "Sukhbir Kaur"],
+ "District 3" : ["John Sims", "Joe Tave", "Zarin Gracey", "August Doyle", "Denise Benavides"],
+ "District 4" : ["Carolyn King Arnold", "Jamie Smith"],
+ "District 5" : ["Terry Perkins", "Jaime Resendez", "Yolanda Faye Williams"],
+ "District 6" : ["Tony Carrillo", "Omar Narvaez", "Sidney Robles Martinez", "Monica R Alonzo"],
+ "District 7" : ["Tracy Dotie Hill", "Adam Bazaldua", "Marvin E Crenshaw", "Okema Thomas"],
+ "District 8" : ["Subrina Lynn Brenham", "Davante \"Shawt\" Peters", "Tennell Atkins"],
+ "District 9" : ["Kendra Denise Madison", "Paula Blackmon"],
+ "District 10" : ["Kathy Stewart", "Brian Hasenbauer", "Sirrano Keith Baldeo", "Chris Carter"],
+ "District 11" : ["Jaynie Schultz", "Candace Evans"],
+ "District 12" : ["Cara Mendelsohn"],
+ "District 13" : ["Gay Donnell Willis", "Priscilla Shacklett"],
+ "District 14" : ["Joseph F. Miller", "Amanda Schulz", "Paul E. Ridley"]
+}
+
 // corresponds to layer ID found on MapboxGL
-/*
 const toggleableLayerIds = [
     "ChadWest",
-    "EricJohnson",
-    "TennellAtkins",
-    "PaulRidley",
     "AlbertMata",
-    "GayWillis",
-    "JaynieSchultz",
-    "CaraMendelsohn",
-    "PaulaBlackmon",
-    "OmarNarvaez",
-    "OkemaThomas",
-    "KathyStewart",
-    "MonicaRAlonzo",
+    "FelixGriggs",
+
     "JesusMoreno",
-    "AndreTurner",
-    "AdamBazaldua",
+
+    "JoeTave",
+    "JohnSims",
+    "ZarinGracey",
+    "AugustDoyle",
+
     "CarolynArnold",
-    "BrianHasenbauer"]
-*/
-const toggleableLayerIds = [
-    "ChadWest",
+    "JamieSmith",
+
+    "YolandaWilliams",
+
+    "OmarNarvaez",
     "MonicaRAlonzo",
-    "AlbertMata",
-    "MarianaGriggs",
+    "SidneyRoblesMartinez",
+
+    "AdamBazaldua",
+    "OkemaThomas",
+
+    "EricJohnson",
+
+    "TennellAtkins",
+
+    "KendraMadison",
+    "PaulaBlackmon",
+
+    "KathyStewart",
+    "BrianHasenbauer",
+    "ChrisCarter",
+
+    "CandyEvans",
+    "JaynieSchultz",
+
+    "CaraMendelsohn",
+
+    "GayWillis",
+    "PriscillaShacklett",
+
+    "PaulRidley",
+    "KendalRichardson",
+    "AmandaSchulz"
 ]
 
 candidateToMaxContribution = {
-    "Chad West" : 36228,
-    "Tennell Atkins" : 2000,
-    "Adam Bazaldua" : 5300,
-    "Paula Blackmon" : 23225,
-    "Eric Johnson" : 75400,
-    "Kathy Stewart" : 16700,
-    "Jesus Moreno" : 4000,
-    "Cara Mendelsohn" : 8000,
-    "Omar Narvaez" : 4000,
-    "Gay Willis" : 5930,
-    "Jaynie Schultz" : 3880,
-    "Brian Hasenbauer": 602,
+    "Chad West" : 44425,
+    "Tennell Atkins" : 7750,
+    "Adam Bazaldua" : 5800,
+    "Paula Blackmon" : 28675,
+    "Eric Johnson" : 84150,
+    "Kathy Stewart" : 20200,
+    "Jesus Moreno" : 5075,
+    "Cara Mendelsohn" : 6000,
+    "Omar Narvaez" : 8450,
+    "Gay Willis" : 15205,
+    "Jaynie Schultz" : 52383,
+    "Brian Hasenbauer": 2504,
     "Jaime Resendez" : 2000,
-    "Paul Ridley" : 3500,
-    "Okema Thomas" : 6000,
-    "Monica R Alonzo" : 6000,
-    "Carolyn Arnold" : 1000,
-    "Albert Mata" : 2000
+    "Paul Ridley" : 14145,
+    "Okema Thomas" : 4000,
+    "Monica R Alonzo" : 8000,
+    "Carolyn Arnold" : 1800,
+    "Albert Mata" : 7140,
+    "Candy Evans" : 5216,
+    "Zarin Gracey" : 7750,
+    "John Sims" : 2000,
+    "Joe Tave" : 1000,
+    "Kendra Madison" : 750,
+    "August Doyle" : 400,
+    "Yolanda Williams" : 4000,
+    "Priscilla Shacklett" : 3000,
+    "Chris Carter" : 4000,
+    "Felix Griggs" : 2200,
+    "Amanda Schulz" : 3450,
+    "david allen" : 100,
+    "Sidney Robles Martinez" : 250,
+    "Jamie Smith" : 4000,
+    "Kendal Richardson" : 20
 }
 
 /*
@@ -76,23 +128,22 @@ for (id in toggleableLayerIds) {
     layerIdToCandidateName[key] = value
 }
 
-// create dropdown element
-var menuElement = document.createElement("select");
-menuElement.onchange = "renderLayer()"
-menuElement.id = "layer"
+// create dropdown element to display the candidates
+var candidateMenu = document.createElement("select");
+candidateMenu.onchange = "renderLayer()"
+candidateMenu.id = "layer"
 
 // set a default prompt for dropdown
 var defaultOption = document.createElement("option");
 var defaultPrompt = "Candidate"
-defaultOption.style = "display:none"
 defaultOption.text = defaultPrompt
-menuElement.appendChild(defaultOption)
+candidateMenu.appendChild(defaultOption)
 
 var promptLabel = document.createElement("label")
 promptLabel.for = "menu"
 promptLabel.innerHTML = "Select a Candidate"
-document.getElementById("menuContainer").appendChild(menuElement)
-menuElement.appendChild(promptLabel)
+document.getElementById("menuContainer").appendChild(candidateMenu)
+candidateMenu.appendChild(promptLabel)
 
 // add each candidate to dropdown element
 for (x in toggleableLayerIds) {
@@ -100,15 +151,13 @@ for (x in toggleableLayerIds) {
     option.text = layerIdToCandidateName[toggleableLayerIds[x]]
     option.id = toggleableLayerIds[x]
     option.value = toggleableLayerIds[x]
-    menuElement.add(option);
+    candidateMenu.add(option);
 }
 
 // clear the map of all layers
 function vanishAllLayers() {
     for (x in toggleableLayerIds) {
-        if(x != "MarianaGriggs"){
-            map.setLayoutProperty(toggleableLayerIds[x], 'visibility', 'none')
-        }
+        map.setLayoutProperty(toggleableLayerIds[x], 'visibility', 'none')
     }
 }
 
@@ -194,26 +243,16 @@ map.on('load', () => {
               layers: [layerId]
           });
 
-          /*
-          ZCTA5CE10 - property in GeoJSON object that stores the corresponding zipcode
-          candidate name - property in GeoJSON object that stores the total contributions from that zipcode
-          */
-          if (layerIdToCandidateName[layerId] == "Mariana Griggs") {
-            console.log(layerIdToCandidateName[layerId])
-            document.getElementById('pd').innerHTML =`<p>This candidate has not submitted campaign finance records to
-             <a href="https://campfin.dallascityhall.com/">Dallas City Hall CampFin</a></p></p>`;
-          }
-          else {
-            document.getElementById('pd').innerHTML = zipcodes.length
-              ? `<h3> </h3>
+          document.getElementById('pd').innerHTML = zipcodes.length ?
+            `<h3> </h3>
                   <p>
                     ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
                     <strong>
                         $${zipcodes[0].properties[layerIdToCandidateName[layerId]]}
                     </strong>to ${layerIdToCandidateName[layerId]}'s campaign
-                  </p>`
-              : `<p>Hover over a zipcode!</p>`;
-          }
+                  </p>`:
+            `<p>Hover over a zipcode!</p>`;
+
 
         }
     });

@@ -7,7 +7,7 @@ h2,h3 {
     width: 150px;
     overflow-wrap: break-word;
     color: #2e2f8d;
-    margin-left: 20px;
+    margin-left: 30px;
     justify-content: center;
 }
 h3 {
@@ -20,7 +20,7 @@ h3 {
 fieldset {
     position: relative;
     width: 100px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 em, p {
     height: 50px;
@@ -51,13 +51,12 @@ select {
 }
 #features {
     height: 320px;
-    width: 200px;
+    width: 210px;
     opacity: 1;
-    margin-left: 20px;
+    margin-left: 25px;
     border-color: #2e2f8d;
     border-radius: 4px;
     text-align: center;
-    margin-left: 10px;
 }
 footer {
   position: absolute;
