@@ -4,7 +4,7 @@ body {
 }
 h2,h3 {
     font-size: 18px;
-    width: 150px;
+    width: 450px;
     overflow-wrap: break-word;
     color: #2e2f8d;
     margin-left: 30px;
@@ -19,14 +19,12 @@ h3 {
 }
 fieldset {
     position: relative;
-    width: 100px;
+    width: 450px;
     margin-left: 10px;
 }
 em, p {
-    height: 50px;
-    width: 150px;
+    width: 450px;
     overflow-wrap: break-word;
-    margin-left: 20px;
     font-size: 14px;
 }
 .map-overlay {
@@ -43,37 +41,40 @@ em, p {
     width: 100%;
 }
 legend{
-    color: #eb7626;
+    color: #2e2f8d;
     font-size: 14px;
 }
 select {
-    color: #2e2f8d;
+    width: 95%;
+    height: 30px;
 }
 #features {
-    height: 370px;
-    width: 210px;
+    height: 95%;
+    width: 500px;
     opacity: 1;
-    margin-left: 25px;
+    margin-left: 10px;
     border-color: #2e2f8d;
     border-radius: 4px;
     text-align: center;
+    margin-top: 10px;
+}
+#districtmap {
+    width: 500px;
+    margin-left: 5px;
 }
 footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
   margin-bottom: 25px;
   height: 2.5rem;
+  margin-right: 20px;
 }
 #source {
-    width: 200px;
     font-size: 10px;
-    margin-left: 10px;
-    margin-bottom: 25px;
-    text-align: left;
+    margin-left: 5%;
+    margin-bottom: 5px;
 }
 *{
-    margin-top: 10px;
     word-wrap: break-word;
     font-family: 'Amazon Ember', sans-serif;
     text-align: center;

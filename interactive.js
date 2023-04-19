@@ -19,6 +19,7 @@ MAX_ZIPCODE_CONTRIBUTION = 85000
     candidates who do not have campFin data render an info box instead of campFin data
 */
 const district_ballot = new Map([
+ ["Mayor", ["EricJohnson"]],
  ["District 1" , ["ChadWest", "AlbertMata", "FelixGriggs"]],
  ["District 2" , ["JesusMoreno", "SukhbirKaur"]],
  ["District 3" , ["JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides"]],
@@ -256,8 +257,8 @@ const map = new mapboxgl.Map({
     style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
     pitch: 20,
     bearing: 0,
-    center: [-97.010, 32.800],
-    zoom: 9.7
+    center: [-97.197796, 32.767012],
+    zoom: 8.5
 });
 
 // wait for map to load before adjusting it
