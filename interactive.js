@@ -125,6 +125,15 @@ function splitByCapitalLetter(name) {
     return name.split(/(?=[A-Z])/).join(" ")
 }
 
+function toggleMinimap(){
+    var menu = document.getElementById("districtMap")
+    if (menu.style.display === "none") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
+}
+
 function toggleMenu(){
     var menu = document.getElementById("features")
     if (menu.style.display === "none") {

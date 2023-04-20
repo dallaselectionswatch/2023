@@ -1,78 +1,43 @@
 body {
-    margin: 0;
-    padding: 0;
+    height:100%;
+    width: 100%;
 }
-h2,h3 {
-    font-size: 18px;
-    overflow-wrap: break-word;
-    color: #2e2f8d;
-    justify-content: center;
-}
-h3 {
-    font-size: 16px;
-    overflow-wrap: break-word;
-    color: #2e2f8d;
-    justify-content: center;
-}
-fieldset {
-    position: relative;
-}
-em, p {
-    overflow-wrap: break-word;
-    font-size: 14px;
-}
-.map-overlay {
+header {
     position: absolute;
-    background: white;
-    overflow: auto;
-    border:4px;
-    border-style: solid;
+    top: 0;
+    width: 100%;
 }
+#mapToggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#minimap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+}
+#districtMap {
+    width: 100%;
+}
+
+#candidateMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+}
+
 #map {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 100%;
-
-}
-legend{
-    color: #2e2f8d;
-    font-size: 14px;
-}
-select {
-    height: 30px;
-}
-#features {
-    height: 95%;
-    width: 30%;
-    opacity: 1;
-    margin-left: 10px;
-    border-color: #2e2f8d;
-    border-radius: 4px;
-    text-align: center;
-    margin-top: 10px;
-}
-#districtmap {
-    margin-left: 5px;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 25px;
-  height: 2.5rem;
-  margin-right: 20px;
+    height: 100%;
 }
 #menuToggle {
-    margin-left: 5%;
-    position: relative;
-}
-#source {
-    font-size: 10px;
-    margin-left: 5%;
-    margin-bottom: 5px;
-}
-*{
-    word-wrap: break-word;
-    font-family: 'Amazon Ember', sans-serif;
-    text-align: center;
+    top: 0;
+    right: 0;
+    position: absolute;
 }
