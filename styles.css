@@ -4,26 +4,20 @@ body {
 }
 h2,h3 {
     font-size: 18px;
-    width: 450px;
     overflow-wrap: break-word;
     color: #2e2f8d;
-    margin-left: 30px;
     justify-content: center;
 }
 h3 {
     font-size: 16px;
     overflow-wrap: break-word;
     color: #2e2f8d;
-    margin-left: 10px;
     justify-content: center;
 }
 fieldset {
     position: relative;
-    width: 450px;
-    margin-left: 10px;
 }
 em, p {
-    width: 450px;
     overflow-wrap: break-word;
     font-size: 14px;
 }
@@ -39,18 +33,18 @@ em, p {
     top: 0;
     bottom: 0;
     width: 100%;
+
 }
 legend{
     color: #2e2f8d;
     font-size: 14px;
 }
 select {
-    width: 95%;
     height: 30px;
 }
 #features {
     height: 95%;
-    width: 500px;
+    width: 30%;
     opacity: 1;
     margin-left: 10px;
     border-color: #2e2f8d;
@@ -59,7 +53,6 @@ select {
     margin-top: 10px;
 }
 #districtmap {
-    width: 500px;
     margin-left: 5px;
 }
 footer {
@@ -68,6 +61,10 @@ footer {
   margin-bottom: 25px;
   height: 2.5rem;
   margin-right: 20px;
+}
+#menuToggle {
+    margin-left: 5%;
+    position: relative;
 }
 #source {
     font-size: 10px;

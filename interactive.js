@@ -125,6 +125,15 @@ function splitByCapitalLetter(name) {
     return name.split(/(?=[A-Z])/).join(" ")
 }
 
+function toggleMenu(){
+    var menu = document.getElementById("features")
+    if (menu.style.display === "none") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
+}
+
 // create dropdown element to display the candidates
 var district_menu = document.createElement("select");
 district_menu.onchange = "renderCandidateMenu()"
