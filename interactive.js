@@ -126,11 +126,19 @@ function splitByCapitalLetter(name) {
 }
 
 function toggleMinimap(){
-    var menu = document.getElementById("districtMap")
-    if (menu.style.display === "none") {
-        menu.style.display = "block";
-    } else {
+    var minimap = document.getElementById("minimap")
+    var map = document.getElementById("map")
+    var menu = document.getElementById("candidateMenu")
+
+    if (minimap.style.display === "none") {
+        minimap.style.display = "block";
+        map.style.display = "none";
         menu.style.display = "none";
+
+    } else {
+        minimap.style.display = "none";
+        map.style.display = "block";
+        menu.style.display = "block";
     }
 }
 
@@ -275,8 +283,8 @@ const map = new mapboxgl.Map({
     style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
     pitch: 20,
     bearing: 0,
-    center: [-97.197796, 32.767012],
-    zoom: 8.5
+    center: [-96.949109, 33.229787],
+    zoom: 7.8
 });
 
 // wait for map to load before adjusting it
