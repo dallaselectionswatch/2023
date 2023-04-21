@@ -1,7 +1,7 @@
 body {
     height:100%;
     width: 100%;
-    background-color: AliceBlue;
+    background-color: rgba(241, 241, 241);
 }
 #mapToggle {
     position: absolute;
@@ -14,7 +14,7 @@ body {
   display: block;
   width: 100%;
   border: none;
-  background-color: AliceBlue;
+  background-color: #4264fb;
   color: black;
   padding: 14px 28px;
   font-size: 16px;
@@ -48,7 +48,7 @@ body {
     margin: 2%;
     right: 0;
     width: 50%;
-    background-color: AliceBlue;
+    background-color: rgba(241, 241, 241, 0.6);
       border-style: solid;
         border-width: thick;
 
@@ -68,7 +68,7 @@ footer {
     bottom: 0;
     left: 0;
     height: 8%;
-    background-color: AliceBlue;
+    background-color: rgb(241, 241, 241);
     width: 100%;
     display: flex;
     justify-content: center;
