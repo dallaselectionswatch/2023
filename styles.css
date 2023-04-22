@@ -42,9 +42,12 @@ h3 {
 #features {
     margin: 2%;
 }
+.heading {
+    line-height: 0.5em;
+}
 #minimap {
     position: absolute;
-    top: 0;
+    justify-content: center;
     left: 0;
     width: 90%;
     top: 50%;
