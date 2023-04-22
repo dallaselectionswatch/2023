@@ -107,8 +107,11 @@ h3 {
     font-size: 0.875em;
     margin: 0.5em;
 }
-select, h1, legend, fieldset{
+select, h1, legend{
     font-size: 1em;
     text-align: center;
-    margin: 0.75em;
+}
+fieldset {
+    height: 2em;
+    text-align: center;
 }
