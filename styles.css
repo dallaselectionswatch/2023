@@ -44,6 +44,8 @@ h3 {
 }
 .heading {
     line-height: 0.5em;
+    font-size: 0.875em;
+    font-weight: bold;
 }
 #minimap {
     position: absolute;
@@ -62,9 +64,9 @@ h3 {
 #candidateMenu {
     position: absolute;
     text-align: left;
-    margin: 2%;
+    margin: 1%;
     right: 0;
-    width: 50%;
+    width: 52%;
     background-color: rgba(241, 241, 241, 0.8);
     border-style: solid;
     border-width: thick;
@@ -99,11 +101,14 @@ footer {
 }
 p {
     font-size: 0.75em;
+    margin: 0.5em;
 }
 h3 {
     font-size: 0.875em;
+    margin: 0.5em;
 }
 select, h1, legend, fieldset{
     font-size: 1em;
     text-align: center;
+    margin: 0.75em;
 }
