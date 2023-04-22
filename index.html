@@ -11,30 +11,49 @@
   </head>
   <body>
     <div id="map"></div>
-    <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
+    <p id="source"><strong> Data Source:</strong><br>
+      <a  href="https://campfin.dallascityhall.com/">Dallas CampFin</a>
+    </p>
 
     <div id="minimap" style="display:none">
       <img src="CouncilDistrictMap.jpg" id="districtMap">
     </div>
 
     <div id="candidateMenu">
+
       <div class="map-overlay" id="features">
-        <h2>Total Contributions to a Campaign Per Zipcode</h2>
+        <h1>Zipcode-Based Campaign Contributions</h1>
         <fieldset id="districtContainer" onchange="renderCandidateMenu()">
           <legend>Select a District</legend>
         </fieldset>
         <fieldset id="candidateContainer" onchange="renderLayer()">
           <legend>Select a Candidate</legend>
         </fieldset>
-        <div id="pd"><p>Click/Hover on a zipcode<br> Scroll with two fingers to rotate the map.</p></div>
+        <div id="pd"></div>
+      </div>
+      <div id="about">
+        <h1> About </h1>
+        <h3> Why is this important? </h3>
+        <p> According to TransparencyUSA, 91% of TX Legislature winners outspent opponents."
+          <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
+            source
+          </a>
+        </p>
+
+        <h3> Who are we? </h3>
+        <p> We're a team of students, teachers, and software developers committed to accessible campaign finance information.</p>
+        <h3> How to Navigate the Map</h3>
+        <p id="directions">
+          <strong> View Contributions:</strong> Click/Hover over a zipcode<br>
+          <strong> Change Viewing Angle:</strong> Drag 2 fingers up/down.<br>
+          <strong> Move the map: </strong> Drag 1 finger in any direction.<br>
+          <strong> Rotate the Map:</strong> Rotate two fingers clockwise.</p>
       </div>
     </div>
     <script src="interactive.js"></script>
 
   </body>
-  <footer>
-      <p id="source">Authors: R. Wilson, H. Fitch, and I. Mercado<br>
-      <a href="https://campfin.dallascityhall.com/">Source: Dallas CampFin</a></p>
-  </footer>
+  <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
+
 </html>
 

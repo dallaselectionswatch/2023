@@ -3,9 +3,26 @@ body {
     width: 100%;
     background-color: rgba(241, 241, 241);
 }
-#mapToggle {
+#source {
     position: absolute;
     top: 0;
+    left: 0;
+    margin: 4%;
+    text-align: left;
+    background-color: rgba(241, 241, 241, 0.8);
+    border-style: solid;
+    border-width: thick;
+    padding: 2%;
+}
+h3 {
+    text-align: left;
+}
+#directions{
+    text-align: left;
+}
+#mapToggle {
+    position: absolute;
+    bottom: 0;
     left: 0;
     display: flex;
     justify-content: center;
@@ -15,13 +32,11 @@ body {
   width: 100%;
   border: none;
   background-color: #4264fb;
-  color: black;
+  color: white;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
-  text-align: center;
-  border-style: solid;
-        border-width: thick;
+  text-align: left;
 
 }
 #features {
@@ -43,14 +58,13 @@ body {
 
 #candidateMenu {
     position: absolute;
-    top: 10%;
-    text-align: center;
+    text-align: left;
     margin: 2%;
     right: 0;
     width: 50%;
-    background-color: rgba(241, 241, 241, 0.6);
-      border-style: solid;
-        border-width: thick;
+    background-color: rgba(241, 241, 241, 0.8);
+    border-style: solid;
+    border-width: thick;
 
 
 }
@@ -77,6 +91,16 @@ footer {
 
 
 }
-select,p {
+* {
+   font-family: sans-serif;
+}
+p {
+    font-size: 0.75em;
+}
+h3 {
+    font-size: 0.875em;
+}
+select, h1, legend, fieldset{
+    font-size: 1em;
     text-align: center;
 }
