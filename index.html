@@ -10,50 +10,82 @@
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
   </head>
   <body>
-    <div id="map"></div>
-    <p id="source"><strong> Data Source:</strong><br>
-      <a  href="https://campfin.dallascityhall.com/">Dallas CampFin</a>
-    </p>
 
     <div id="minimap" style="display:none">
-      <img src="CouncilDistrictMap.jpg" id="districtMap">
+        <div>
+            <img src="CouncilDistrictMap.jpg" id="districtMap">
+        </div>
+
     </div>
 
     <div id="candidateMenu">
 
-      <div class="map-overlay" id="features">
-        <h1>Zipcode-Based Campaign Contributions</h1>
-        <fieldset id="districtContainer" onchange="renderCandidateMenu()">
-          <legend>Select a District</legend>
-        </fieldset>
-        <fieldset id="candidateContainer" onchange="renderLayer()">
-          <legend>Select a Candidate</legend>
-        </fieldset>
-        <div id="pd"></div>
-      </div>
       <div id="about">
-        <h1> About </h1>
-        <p class="heading"> Why is this important? </p>
-        <p> According to TransparencyUSA, 91% of TX Legislature winners outspent opponents."
-          <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
-            source
-          </a>
-        </p>
+          <h2> About </h2>
+          <h3> Why is this important? </h3>
+          <p>
+              It's important to care about where a campaign gets its money from in an election because it can affect
+              what the candidate cares about and who they are loyal to. When donations come from outside the election
+              district, it can cause problems by making it so that people who aren't even part of the election have too
+              much power to influence it.<br>
 
-        <p class="heading"> Who are we? </p>
-        <p> We're a team of students, teachers, and software developers committed to accessible campaign finance information.</p>
-        <p class="heading"> How to Navigate the Map</p>
-        <p id="directions">
-          <strong> View Contributions:</strong> Click/Hover over a zipcode<br>
-          <strong> Change Viewing Angle:</strong> Drag 2 fingers up/down.<br>
-          <strong> Move the map: </strong> Drag 1 finger in any direction.<br>
-          <strong> Rotate the Map:</strong> Rotate two fingers clockwise.</p>
+
+          </p>
+
+          <h3> Does campaign funding significantly affect the outcome of an election? </h3>
+          <p>
+            Yes! According to TransparencyUSA, 91% of TX Legislature winners outspent opponents."
+            <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
+              source
+            </a>
+          </p>
+
+
+          <h2> How to Navigate the Map</h2>
+          <p id="directions">
+            <strong> View Contributions:</strong> Click/Hover over a zipcode<br>
+            <strong> Change Viewing Angle:</strong> Drag 2 fingers up/down.<br>
+            <strong> Move the map: </strong> Drag 1 finger in any direction.<br>
+            <strong> Rotate the Map:</strong> Rotate two fingers clockwise.
+          </p>
+        </div>
+
+        <div class="map-overlay" id="features">
+            <h2>Zipcode-Based Campaign Contributions</h2>
+            <fieldset id="districtContainer" onchange="renderCandidateMenu()">
+              <legend> <strong> Select a District </strong> </legend>
+            </fieldset>
+            <fieldset id="candidateContainer" onchange="renderLayer()">
+              <legend> <strong> Select a Candidate </strong> </legend>
+            </fieldset>
+            <div id="pd"></div>
       </div>
-    </div>
-    <script src="interactive.js"></script>
 
+    </div>
+
+    <div id="map"></div>
+    <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
+
+
+    <script src="interactive.js"></script>
+    <footer id="footer">
+        <div>
+            <h3> Who are we? </h3>
+            <p>
+                We're a team of students, teachers, and software developers committed to accessible campaign finance information.
+            </p>
+
+        </div>
+
+        <div>
+           <h3 id="source">Data Source:</h3>
+            <p>
+                <a  href="https://campfin.dallascityhall.com/">City of Dallas - Campaign Finance Electronic Filing System</a>
+            </p>
+        </div>
+
+    </footer>
   </body>
-  <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
 
 </html>
 

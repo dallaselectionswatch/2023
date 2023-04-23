@@ -1,40 +1,26 @@
 body {
     height:100%;
     width: 100%;
-    background-color: rgba(241, 241, 241);
-}
-#source {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 4%;
-    text-align: left;
-    background-color: rgba(241, 241, 241, 0.8);
-    border-style: solid;
-    border-width: thick;
-    padding: 2%;
+    background-color: #FFF;
 }
 h3 {
     text-align: left;
 }
-#directions{
-    text-align: left;
-}
 #mapToggle {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     display: flex;
     justify-content: center;
+    margin: auto;
+    width: 80%;
 }
 .block {
-  display: block;
   width: 100%;
   border: none;
   background-color: #4264fb;
   color: white;
   padding: 14px 28px;
-  font-size: 16px;
   cursor: pointer;
   text-align: left;
 
@@ -42,76 +28,60 @@ h3 {
 #features {
     margin: 2%;
 }
-.heading {
-    line-height: 0.5em;
-    font-size: 0.875em;
-    font-weight: bold;
+#about {
+    float: right;
 }
 #minimap {
-    position: absolute;
-    justify-content: center;
-    left: 0;
-    width: 90%;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 80%;
+    position: relative;
+    margin-top: 5%;
 }
 #districtMap {
     width: 100%;
 }
 
 #candidateMenu {
-    position: absolute;
-    text-align: left;
-    margin: 1%;
-    right: 0;
-    width: 52%;
+    position: relative;
+    margin: auto;
+    left: 0;
+    width: 80%;
     background-color: rgba(241, 241, 241, 0.8);
     border-style: solid;
-    border-width: thick;
-
-
+    display: flex;
+    justify-content:space-between;
+    display: block;
+    overflow: auto;
 }
 
 #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    margin-bottom: 5%;
-    left: 0;
-}
-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 8%;
-    background-color: rgb(241, 241, 241);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    border-style: solid;
-            border-width: thick;
-
-
+    position: relative;
+    width: 80%;
+    margin: auto;
+    height: 500px;
 }
 * {
    font-family: sans-serif;
+   margin: auto;
 }
-p {
-    font-size: 0.75em;
-    margin: 0.5em;
-}
-h3 {
-    font-size: 0.875em;
-    margin: 0.5em;
-}
-select, h1, legend{
-    font-size: 1em;
+
+select, h2, legend{
     text-align: center;
+    padding: 3px;
+}
+h3, p, a {
+    text-align: center;
+    padding: 3px;
 }
 fieldset {
-    height: 2em;
-    text-align: center;
+    display: flex;
+    margin: auto;
+}
+#footer{
+    padding: 1px;
+    width: 80%;
+    margin: auto;
+    display:flex;
+    justify-content:space-evenly;
+    position: relative;
+    bottom: 0;
 }

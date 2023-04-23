@@ -129,16 +129,19 @@ function toggleMinimap(){
     var minimap = document.getElementById("minimap")
     var map = document.getElementById("map")
     var menu = document.getElementById("candidateMenu")
+    var footer = document.getElementById("footer")
 
     if (minimap.style.display === "none") {
         minimap.style.display = "block";
         map.style.display = "none";
         menu.style.display = "none";
+        footer.style.display = "none";
 
     } else {
         minimap.style.display = "none";
         map.style.display = "block";
         menu.style.display = "block";
+        footer.style.display ="block";
     }
 }
 
