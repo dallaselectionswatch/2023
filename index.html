@@ -10,7 +10,17 @@
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
   </head>
   <body>
-
+    <div id="nav">
+        <button class="navButtons">
+            <a id="jumpToAbout" class="navLinks"  href="#about"> About </a>
+        </button>
+        <button class="navButtons">
+            <a id="jumpToMap" class="navLinks" href="#map">Map</a>
+        </button>
+        <button class="navButtons">
+            <a id="jumpToFAQ" class="navLinks" href="#faq">FAQ</a>
+        </button>
+    </div>
     <div id="minimap" style="display:none">
         <div>
             <img src="CouncilDistrictMap.jpg" id="districtMap">
@@ -69,7 +79,7 @@
     <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
     <script src="interactive.js"></script>
     <div id="faq">
-
+        <h2> Frequently Asked Questions</h2>
     </div>
   </body>
 

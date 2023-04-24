@@ -331,6 +331,13 @@ document.addEventListener("DOMContentLoaded", function() {
   renderFAQ();
 });
 
+var anchor = document.getElementById('jumpToFAQ');
+anchor.onclick = function() {
+    var el = document.getElementById(anchor.href.substring(1));
+    el.scrollIntoView();
+    return false;
+};
+
 
 // wait for map to load before adjusting it
 map.on('load', () => {
@@ -351,10 +358,9 @@ map.on('load', () => {
               document.getElementById('pd').innerHTML = zipcodes.length ?
                 `<h3> </h3>
                       <p>
-                        ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated
-                        <strong>
-                            $${zipcodes[0].properties[splitByCapitalLetter(layerId)]}
-                        </strong>to ${splitByCapitalLetter(layerId)}'s campaign
+                        ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated a total of
+                        $${zipcodes[0].properties[splitByCapitalLetter(layerId)]}
+                        to ${splitByCapitalLetter(layerId)}'s campaign
                       </p>`:
                 `<p>Hover over a zipcode!</p>`;
             } else {
