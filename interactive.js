@@ -13,6 +13,8 @@ ZIPCODE_PROPERTY_KEY = "ZCTA5CE10"
 
 FILL_OPACITY = 0.85
 MAX_ZIPCODE_CONTRIBUTION = 85000
+var CENTER_OF_MAP = [-96.823081, 32.728088]
+ZOOM_LEVEL = 8.3;
 
 /*
     candidate names must match those of labelIDs in mapbox
@@ -119,6 +121,18 @@ candidateToMaxContribution = {
     "Sidney Robles Martinez" : 250,
     "Jamie Smith" : 4000,
     "Kendal Richardson" : 20
+}
+
+faq_dict = {
+"What motivated your team to focus on campaign finance information?" : "We wanted to explore the effects of funding sources for each individual campaign. As we learned more about how these elections are run and won, we expanded our research topics to include what you see today.",
+"Can you tell me more about the accessibility of the information you provide?" : "We took a multi-media approach to offer visuals and text to voters. As our team grows, we'll offer translations of the research content.",
+"How do you gather the information on campaign finance?" : "Our primary data source is https://campfin.dallascityhall.com/search.aspx which is where records of campaign finance reports are stored by the City of Dallas.",
+"Are there any specific goals your team has for the impact of your work?" : "We hope to inspire political involvement in service organizations, where donations have a higher direct impact on our communities.",
+"What kind of software development do you specialize in?" : "This project involved Python, Javascript, HTML, and CSS. Particular libraries include Pandas, SpaCy, and Mapbox GL.",
+"How do you involve students and teachers in your team?" : "We divided the work based on expertise and interest, which led to teachers and students writing the majority of the written content, and leaving the coding to the software developers.",
+"Have you faced any challenges while working on this project, and if so, how have you overcome them?" : "We were unsure of the content and visual representations, so we employed a variety of focus groups to determine the most relevant and interesting data.",
+"How do you ensure the accuracy of the information you provide?" : "We drew data from the authoritative source, straight from Dallas' records. Dallas makes this data difficult to analyze, but we employed professional developers who have experience working at the top companies in the software industry. We reviewed our code consistently and persistently, which gives each team member the confidence to present our analysis to the public.",
+"Are there any future plans or expansions for your project?" : "After the votes are counted and the city council members are placed in office, they will begin voting on key ordinances that affect more than just their respective district. We'll do our part to demonstrate any potential quid-pro-quo relationships between council-members and their out-of-district donors. We will also review who each council member nominates to voting positions throughout the many committees that decide on key funding, oversight, and urban planning for Dallas.",
 }
 
 function splitByCapitalLetter(name) {
@@ -286,9 +300,37 @@ const map = new mapboxgl.Map({
     style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
     pitch: 20,
     bearing: 0,
-    center: [-96.949109, 33.229787],
-    zoom: 7.8
+    center: CENTER_OF_MAP,
+    zoom: ZOOM_LEVEL
 });
+
+// Render the FAQ section
+function renderFAQ() {
+    var faq_list = document.getElementById("faq")
+    for (var q in faq_dict) {
+        var question = document.createElement("h3");
+        var answer = document.createElement("p");
+        var faq_container = document.createElement("div");
+
+        console.log(q)
+        console.log(faq_dict[q])
+
+        question.innerText = q;
+        answer.innerText = faq_dict[q]
+        faq_container.append(question)
+        faq_container.append(answer)
+        faq_list.append(faq_container)
+    }
+}
+
+function centerMap() {
+    map.flyTo({center:CENTER_OF_MAP, zoom: ZOOM_LEVEL});
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderFAQ();
+});
+
 
 // wait for map to load before adjusting it
 map.on('load', () => {

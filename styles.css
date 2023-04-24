@@ -6,7 +6,7 @@ body {
 h3 {
     text-align: left;
 }
-#mapToggle {
+#mapToggle, #centerMap {
     position: relative;
     bottom: 0;
     left: 0;
@@ -15,6 +15,7 @@ h3 {
     margin: auto;
     width: 80%;
 }
+
 .block {
   width: 100%;
   border: none;
@@ -24,6 +25,9 @@ h3 {
   cursor: pointer;
   text-align: left;
 
+}
+#centerMap {
+    background-color: #5EBA7D;
 }
 #features {
     margin: 2%;
@@ -80,8 +84,6 @@ fieldset {
     padding: 1px;
     width: 80%;
     margin: auto;
-    display:flex;
-    justify-content:space-evenly;
     position: relative;
     bottom: 0;
 }
