@@ -4,7 +4,7 @@ body {
     background-color: #FFF;
 }
 h3 {
-    text-align: left;
+    text-align: center;
 }
 .navButtons {
     width: 100%;
@@ -84,10 +84,11 @@ h3 {
 select, h2, legend{
     text-align: center;
     padding: 3px;
+    margin-top: 6px;
 }
-h3, p, a {
+h3, p, a, strong{
     text-align: center;
-    padding: 3px;
+    padding: 6px;
 }
 fieldset {
     display: flex;
