@@ -27,6 +27,11 @@ h3 {
     margin: auto;
     width: 80%;
 }
+#results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
 
 .block {
   width: 100%;

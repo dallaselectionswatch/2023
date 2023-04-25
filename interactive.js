@@ -366,7 +366,8 @@ map.on('load', () => {
                         $${zipcodes[0].properties[splitByCapitalLetter(layerId)]}
                         to ${splitByCapitalLetter(layerId)}'s campaign
                       </p>`:
-                `<p>Hover over a zipcode!</p>`;
+                `<h3> Total Amount Contributed Per Zipcode</h3>
+                <p>Hover over a zipcode!</p>`;
             } else {
                 document.getElementById('pd').innerHTML = `<p>This candidate did not submit campaign finance records to
                     <a href="https://campfin.dallascityhall.com/">Dallas City Hall</a>
