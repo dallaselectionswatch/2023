@@ -87,6 +87,13 @@ const toggleableLayerIds = [
     "AmandaSchulz"
 ]
 
+candidateInExcess = {
+    "Chad West" : "$14,498",
+    "Okema Thomas" : "$2000",
+    "Paula Blackmon" : "$10,000",
+    "Gay Willis": "$1,500",
+}
+
 candidateToMaxContribution = {
     "Chad West" : 44425,
     "Tennell Atkins" : 7750,
@@ -312,9 +319,6 @@ function renderFAQ() {
         var answer = document.createElement("p");
         var faq_container = document.createElement("div");
 
-        console.log(q)
-        console.log(faq_dict[q])
-
         question.innerText = q;
         answer.innerText = faq_dict[q]
         faq_container.append(question)
@@ -356,7 +360,7 @@ map.on('load', () => {
               });
 
               document.getElementById('pd').innerHTML = zipcodes.length ?
-                `<h3> </h3>
+                `<h3> Total Amount Contributed Per Zipcode</h3>
                       <p>
                         ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated a total of
                         $${zipcodes[0].properties[splitByCapitalLetter(layerId)]}
@@ -367,6 +371,19 @@ map.on('load', () => {
                 document.getElementById('pd').innerHTML = `<p>This candidate did not submit campaign finance records to
                     <a href="https://campfin.dallascityhall.com/">Dallas City Hall</a>
                 </p>`
+            }
+            if (splitByCapitalLetter(layerId) in candidateInExcess) {
+                const excessContainer = document.getElementById("excess")
+                excessContainer.innerHTML =
+                    `<h3> Total Amount Contributed Above $1000 </h3>
+                        <p>
+                            ${splitByCapitalLetter(layerId)}'s campaign received
+                            ${candidateInExcess[splitByCapitalLetter(layerId)]} in excess of the legal limit of $1,000.
+                        </p>
+                        <a href="http://citysecretary2.dallascityhall.com/pdf/code/15A.PDF">
+                            SEC.15A-2(a)(1)
+                        </a>
+                    `
             }
         }
 
