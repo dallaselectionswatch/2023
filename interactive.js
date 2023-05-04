@@ -149,19 +149,16 @@ function splitByCapitalLetter(name) {
 function toggleMinimap(){
     var minimap = document.getElementById("minimap")
     var map = document.getElementById("map")
-    var menu = document.getElementById("candidateMenu")
     var footer = document.getElementById("footer")
 
     if (minimap.style.display === "none") {
         minimap.style.display = "block";
         map.style.display = "none";
-        menu.style.display = "none";
         footer.style.display = "none";
 
     } else {
         minimap.style.display = "none";
         map.style.display = "block";
-        menu.style.display = "block";
         footer.style.display ="block";
     }
 }
@@ -327,6 +324,20 @@ function renderFAQ() {
     }
 }
 
+function toggle() {
+  // Declare variable menu
+  let menu = document.getElementById("side-menu");
+
+  // toggle code
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  }
+  else {
+    menu.style.display = "block";
+  }
+}
+
+
 function centerMap() {
     map.flyTo({center:CENTER_OF_MAP, zoom: ZOOM_LEVEL});
 }
@@ -334,14 +345,6 @@ function centerMap() {
 document.addEventListener("DOMContentLoaded", function() {
   renderFAQ();
 });
-
-var anchor = document.getElementById('jumpToFAQ');
-anchor.onclick = function() {
-    var el = document.getElementById(anchor.href.substring(1));
-    el.scrollIntoView();
-    return false;
-};
-
 
 // wait for map to load before adjusting it
 map.on('load', () => {

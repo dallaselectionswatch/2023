@@ -62,9 +62,8 @@ h3 {
 }
 
 #candidateMenu {
-    padding-top: 2%;
-    position: relative;
     margin: auto;
+    margin-top: 150px;
     left: 0;
     width: 80%;
     justify-content:space-between;
@@ -111,13 +110,44 @@ fieldset {
     padding-top: 5%;
     background-color: rgb(251, 209, 130, 0.15);
 }
+.content {
+  padding: 16px;
+  height: 1500px;
+  z-index: 900;
+}
+/* Side Menu Container */
+.side-menu {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  z-index: 950;
+}
 
-#nav {
-    position: fixed;
-    width: 10%;
-    right: 0;
-    height: 100%;
-    vertical-align: middle;
-    align-items: center;
-    margin-top: 10%;
+/* Side Menu Links */
+.side-menu a {
+  display: block;
+  color: #818181;
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+/* When mouse hover on links in side Menu */
+.side-menu a:hover {
+  background-color: darkred;
+  color: white;
+  -webkit-transition: background-color 0.6s ease-out, color 0.6s ease-out;
+  -moz-transition: background-color 0.6s ease-out, color 0.6s ease-out;
+  -o-transition: background-color 0.6s ease-out, color 0.6s ease-out;
+  transition: background-color 0.6s ease-out, color 0.6s ease-out;
+}
+
+/* Side Menu Heading */
+.side-menu h3 {
+  padding: 8px;
 }

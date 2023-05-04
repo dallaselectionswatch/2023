@@ -10,95 +10,90 @@
     <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
   </head>
   <body>
-    <div id="nav">
-        <button class="navButtons">
-            <a id="jumpToAbout" class="navLinks"  href="#about"> <h2>About </h2> </a>
-        </button>
-
-        <button class="navButtons">
-            <a id="jumpToDirections" class="navLinks" href="#directionsHeader"><h2> How To </h2></a>
-        </button>
-
-        <button class="navButtons">
-            <a id="jumpToMap" class="navLinks" href="#map"><h2> Map </h2></a>
-        </button>
-        <button class="navButtons">
-            <a id="jumpToFAQ" class="navLinks" href="#faq"><h2> FAQ </h2></a>
-        </button>
+    <div class="side-menu" id="side-menu">
+            <a href="#about"> <h2>About </h2> </a>
+            <a href="#directionsHeader"><h2> How To </h2></a>
+            <a href="#map"><h2> Map </h2></a>
+            <a href="#faq"><h2> FAQ </h2></a>
     </div>
-    <div id="minimap" style="display:none">
-        <div>
-            <img src="CouncilDistrictMap.jpg" id="districtMap">
-        </div>
+    <div class="content">
 
-    </div>
+        <div id="candidateMenu">
 
-    <div id="candidateMenu">
-
-      <div id="about">
-          <h2> About </h2>
-          <h3> Why is this important? </h3>
-          <p>
-              It's important to care about where a campaign gets its money from in an election because it can affect
-              what the candidate cares about and who they are loyal to. When donations come from outside the election
-              district, it can cause problems by making it so that people who aren't even part of the election have too
-              much power to influence it.<br>
+          <div id="about">
+              <h2> About </h2>
+              <h3> Why is this important? </h3>
+              <p>
+                  It's important to care about where a campaign gets its money from in an election because it can affect
+                  what the candidate cares about and who they are loyal to. When donations come from outside the election
+                  district, it can cause problems by making it so that people who aren't even part of the election have too
+                  much power to influence it.<br>
 
 
-          </p>
+              </p>
 
-          <h3> Does campaign funding significantly affect the outcome of an election? </h3>
-          <p>
-            Yes! According to TransparencyUSA, 91% of TX Legislature winners outspent opponents."
-            <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
-              source
-            </a>
-          </p>
+              <h3> Does campaign funding significantly affect the outcome of an election? </h3>
+              <p>
+                Yes! According to TransparencyUSA, 91% of TX Legislature winners outspent opponents."
+                <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
+                  source
+                </a>
+              </p>
 
 
-          <h2 id="directionsHeader"> How to Use the Map</h2>
-          <p id="directions">
-              1. <strong> Select your district from the dropdown</strong>. If you aren't sure, that's okay! Scroll down and click the blue button to determine your district. <br>
-              2. <strong>Pick a candidate </strong> to see a map of where they're receiving contributions from. <br>
-              3. <strong> Check out the colors and height! </strong> The darker the blue and the higher the tower, the more money that zipcode donated to the candidate's campaign.<br>
+              <h2 id="directionsHeader"> How to Use the Map</h2>
+              <p id="directions">
+                  1. <strong> Select your district from the dropdown</strong>. If you aren't sure, that's okay! Scroll down and click the blue button to determine your district. <br>
+                  2. <strong>Pick a candidate </strong> to see a map of where they're receiving contributions from. <br>
+                  3. <strong> Check out the colors and height! </strong> The darker the blue and the higher the tower, the more money that zipcode donated to the candidate's campaign.<br>
 
-            <h3> How to Navigate the Map </h3>
-          <p>
-            <strong> View Contributions:</strong> Click/Hover over a zipcode<br>
-            <strong> Change Viewing Angle:</strong> Drag 2 fingers up/down.<br>
-            <strong> Move the map: </strong> Drag 1 finger in any direction.<br>
-            <strong> Rotate the Map:</strong> Rotate two fingers clockwise.
+                <h3> How to Navigate the Map </h3>
+              <p>
+                <strong> View Contributions:</strong> Click/Hover over a zipcode<br>
+                <strong> Change Viewing Angle:</strong> Drag 2 fingers up/down.<br>
+                <strong> Move the map: </strong> Drag 1 finger in any direction.<br>
+                <strong> Rotate the Map:</strong> Place two fingers on the map and drag up with one finger and down with the other.
 
-          </p>
+              </p>
 
-          </p>
-        </div>
-
-        <div class="map-overlay" id="features">
-            <h2>Zipcode-Based Campaign Contributions</h2>
-            <fieldset id="districtContainer" onchange="renderCandidateMenu()">
-              <legend> <strong> Select a District </strong> </legend>
-            </fieldset>
-            <fieldset id="candidateContainer" onchange="renderLayer()">
-              <legend> <strong> Select a Candidate </strong> </legend>
-            </fieldset>
-            <div id="results">
-                <div id="pd"></div>
-                <div id="excess"></div>
+              </p>
             </div>
 
-      </div>
+            <div class="map-overlay" id="features">
+                <h2>Zipcode-Based Campaign Contributions</h2>
+                <fieldset id="districtContainer" onchange="renderCandidateMenu()">
+                  <legend> <strong> Select a District </strong> </legend>
+                </fieldset>
+                <fieldset id="candidateContainer" onchange="renderLayer()">
+                  <legend> <strong> Select a Candidate </strong> </legend>
+                </fieldset>
+                <div id="results">
+                    <div id="pd"></div>
+                    <div id="excess"></div>
+                </div>
+
+          </div>
+
+        </div>
+
+        <div id="map"></div>
+        <div id="minimap" style="display:none">
+            <div>
+                <img src="CouncilDistrictMap.jpg" id="districtMap">
+            </div>
+
+        </div>
+
+        <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
+
+        <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
+        <script src="interactive.js"></script>
+        <div id="faq">
+            <h2> Frequently Asked Questions</h2>
+        </div>
 
     </div>
 
-    <div id="map"></div>
-    <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
-
-    <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
-    <script src="interactive.js"></script>
-    <div id="faq">
-        <h2> Frequently Asked Questions</h2>
-    </div>
   </body>
 
 </html>
