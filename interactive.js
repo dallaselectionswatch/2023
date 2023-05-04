@@ -131,6 +131,7 @@ candidateToMaxContribution = {
 }
 
 faq_dict = {
+"What should I look for in the map?" : "Look for the dark blue parts of a candidate's funding map. If a candidate receives more money from outside donors, then the outside-donors are likely to end up deciding who wins the race.",
 "What motivated your team to focus on campaign finance information?" : "We wanted to explore the effects of funding sources for each individual campaign. As we learned more about how these elections are run and won, we expanded our research topics to include what you see today.",
 "How do you gather the information on campaign finance?" : "Our primary data source is https://campfin.dallascityhall.com which is where records of campaign finance reports are stored by the City of Dallas.",
 "How do you ensure the accuracy of the information you provide?" : "We drew data from the authoritative source, straight from Dallas' records. Dallas makes this data difficult to analyze, but we employed professional developers who have experience working at the top companies in the software industry. We reviewed our code consistently and persistently, which gives each team member the confidence to present our analysis to the public.",
