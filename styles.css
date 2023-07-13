@@ -22,9 +22,10 @@ body{
     background: #11101d;
     padding: 6px 14px;
     transition: all 0.5s ease;
+    z-index: 1001;
 }
 .sidebar.active {
-    width: 260px;
+    width: 230px;
 }
 .sidebar .logo_content .logo{
     color: #fff;
@@ -135,9 +136,10 @@ body{
 .home_content{
     position: absolute;
     height: 100%;
-    width: calc(100% - 240px);
-    left: 240px;
-    overflow:scroll
+    width: calc(100% - 122px);
+    left: 122px;
+    overflow:scroll;
+    z-index: 0;
 }
 
 .home_content text{
