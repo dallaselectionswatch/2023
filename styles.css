@@ -136,10 +136,11 @@ body{
 .home_content{
     position: absolute;
     height: 100%;
-    width: calc(100% - 122px);
-    left: 122px;
+    width: calc(100% - 100px);
+    left: 92px;
     overflow:scroll;
     z-index: 0;
+    margin: 4px;
 }
 
 .home_content text{
