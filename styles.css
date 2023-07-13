@@ -159,3 +159,12 @@ select, legend{
     text-align: center;
     width: 100%;
 }
+.block {
+  width: 100%;
+  border: none;
+  background-color: #4264fb;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-align: center;
+}
