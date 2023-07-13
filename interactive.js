@@ -131,16 +131,10 @@ candidateToMaxContribution = {
 }
 
 faq_dict = {
-"What should I look for in the map?" : "Look for the dark blue parts of a candidate's funding map. If a candidate receives more money from outside donors, then the outside-donors are likely to end up deciding who wins the race.",
-"What motivated your team to focus on campaign finance information?" : "We wanted to explore the effects of funding sources for each individual campaign. As we learned more about how these elections are run and won, we expanded our research topics to include what you see today.",
+"What should I look for in the map?" : "Look for the dark blue parts of a candidate's funding map.The darker the blue, the more money that area donated to the campaign.",
 "How do you gather the information on campaign finance?" : "Our primary data source is https://campfin.dallascityhall.com which is where records of campaign finance reports are stored by the City of Dallas.",
 "How do you ensure the accuracy of the information you provide?" : "We drew data from the authoritative source, straight from Dallas' records. Dallas makes this data difficult to analyze, but we employed professional developers who have experience working at the top companies in the software industry. We reviewed our code consistently and persistently, which gives each team member the confidence to present our analysis to the public.",
-"Are there any future plans or expansions for your project?" : "After the votes are counted and the city council members are placed in office, they will begin voting on key ordinances that affect more than just their respective district. We'll do our part to demonstrate any potential quid-pro-quo relationships between council-members and their out-of-district donors. We will also review who each council member nominates to voting positions throughout the many committees that decide on key funding, oversight, and urban planning for Dallas.",
-"Are there any specific goals your team has for the impact of your work?" : "We hope to inspire political involvement in service organizations, where donations have a higher direct impact on our communities.",
-"Can you tell me more about the accessibility of the information you provide?" : "We took a multi-media approach to offer visuals and text to voters. As our team grows, we'll offer translations of the research content.",
-"How do you involve students and teachers in your team?" : "We divided the work based on expertise and interest, which led to teachers and students writing the majority of the content and left the coding to the software developers.",
-"What kind of software development do you specialize in?" : "This project involved Python, Javascript, HTML, and CSS. Particular libraries include Pandas, SpaCy, and Mapbox GL.",
-"Have you faced any challenges while working on this project, and if so, how have you overcome them?" : "Time. We all have school or jobs, so finding time for this project was difficult. However, each of us are committed to devoting our skills to our communities. Believing that people could find meaning in this project kept us focused.",
+"Are there any future plans or expansions for your project?" : "After the votes are counted and the city council members are placed in office, they will begin voting on key ordinances that affect more than just their respective district. We'll do our part to report any potential quid-pro-quo relationships between council-members and their out-of-district donors. We will also review who each council member nominates to voting positions throughout the many committees that decide on key funding, oversight, and urban planning for Dallas.",
 }
 
 function splitByCapitalLetter(name) {

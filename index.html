@@ -7,40 +7,59 @@
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet"/>
-    <link href="https://fonts.cdnfonts.com/css/amazon-ember" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="side-menu" id="side-menu">
-            <a href="#about"> <h2>About </h2> </a>
-            <a href="#directionsHeader"><h2> How To </h2></a>
-            <a href="#map"><h2> Map </h2></a>
-            <a href="#faq"><h2> FAQ </h2></a>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxs-cube-alt' ></i>
+                <div class="logo_name">Dallas Elections Watch</div>
+            </div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#about">
+                    <i class='bx bx-info-circle' ></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="#features">
+                    <i class='bx bxs-compass' ></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <li>
+                <a href="#faq">
+                    <i class='bx bx-question-mark' ></i>
+                    <span class="links_name">FAQ</span>
+                </a>
+                <span class="tooltip">FAQ</span>
+            </li>
+        </ul>
     </div>
-    <div class="content">
-
+    <div class="home_content">
         <div id="candidateMenu">
 
           <div id="about">
               <h2> About </h2>
               <h3> Why is this important? </h3>
               <p>
-                  It's important to care about where a campaign gets its money from in an election because it can affect
-                  what the candidate cares about and who they are loyal to. When donations come from outside the election
-                  district, it can cause problems by making it so that people who aren't even part of the election have too
-                  much power to influence it.<br>
-
-
+                   Elections are usually decided by whichever campaign can raise the most money
+                  <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
+                  (source)
+                  </a>
+                  <br>
+                  <br>
+                   Who do you think would be
+                   more loyal to their district: a candidate who raised money from people in the district or a candidate
+                   who raised money from outside investors?<br>
               </p>
-
-              <h3> Does campaign funding significantly affect the outcome of an election? </h3>
-              <p>
-                Yes! According to TransparencyUSA, 91% of TX Legislature winners outspent opponents."
-                <a href="https://www.transparencyusa.org/article/election-takeaways-does-spending-the-most-win-elections?state=tx">
-                  source
-                </a>
-              </p>
-
-
               <h2 id="directionsHeader"> How to Use the Map</h2>
               <p id="directions">
                   1. <strong> Select your district from the dropdown</strong>. If you aren't sure, that's okay! Scroll down and click the blue button to determine your district. <br>
@@ -77,14 +96,6 @@
         </div>
 
         <div id="map"></div>
-        <div id="minimap" style="display:none">
-            <div>
-                <img src="CouncilDistrictMap.jpg" id="districtMap">
-            </div>
-
-        </div>
-
-        <button id="mapToggle" class="block" onclick="toggleMinimap()"> Hide/Show District Map</button>
 
         <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
         <script src="interactive.js"></script>
@@ -93,7 +104,14 @@
         </div>
 
     </div>
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
 
+        btn.onclick = function() {
+            sidebar.classList.toggle("active")
+        }
+    </script>
   </body>
 
 </html>
