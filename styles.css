@@ -155,3 +155,7 @@ body{
     height: 500px;
     padding-top: 5%;
 }
+select, legend{
+    text-align: center;
+    width: 100%;
+}
