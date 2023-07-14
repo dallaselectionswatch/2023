@@ -1,11 +1,20 @@
+"""
+ Mapbox GL requires a geoJSON file to support the per-zipcode rendering.
+
+ This file serves as a helper tool to generate that formatted file format.
+
+ This differs from the updateProperty_dynamic.py becauseeeeee... I cant remember.
+
+ I think this is the actual helper tool and the _dynamic file was just a quick proof of concept.
+"""
 # hold this
 import json
 import pandas as pd
 import numpy as np
 
-zips_candContributions_filename = '2023DallasCampFin.xlsx'
+zips_candContributions_filename = '../Data/2023DallasCampFin.xlsx'
 sheet = 'TexasZipAmountPerCand'
-geoJSON_filename = 'texas-zip-codes-_1613.geojson'
+geoJSON_filename = '../Data/texas-zip-codes-_1613.geojson'
 
 """
 Zipcode ; Amount ; Candidate
@@ -62,7 +71,7 @@ for feat in all_zips_data["features"]:
         continue
 
 #Write result to a new file
-with open('zipcodes_contributions.geojson', 'w') as f:
+with open('../Data/zipcodes_contributions.geojson', 'w') as f:
     json.dump(zips_contributions_data, f)
 
 # Print Zips where an error occurred
