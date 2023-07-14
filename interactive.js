@@ -174,7 +174,7 @@ district_menu.id = "district"
 
 // set a default prompt for dropdown
 var defaultDistrict = document.createElement("option");
-var defaultDistrictPrompt = "District"
+var defaultDistrictPrompt = "Select a District"
 defaultDistrict.text = defaultDistrictPrompt
 district_menu.appendChild(defaultDistrict)
 document.getElementById("districtContainer").appendChild(district_menu)
@@ -204,7 +204,7 @@ function renderCandidateMenu(){
 
     // set a default prompt for dropdown
     var defaultOption = document.createElement("option");
-    defaultOption.text = "Candidate"
+    defaultOption.text = "Select a Candidate"
     candidateMenu.appendChild(defaultOption)
 
     var promptLabel = document.createElement("label")
