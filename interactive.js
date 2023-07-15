@@ -364,6 +364,9 @@ var table = new Tabulator("#excess-donations-table", {
     ],
 });
 
+map.addControl(new mapboxgl.NavigationControl());
+
+
 // wait for map to load before adjusting it
 map.on('load', () => {
     // make a pointer cursor

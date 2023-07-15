@@ -36,6 +36,14 @@
                 <span class="tooltip">Map</span>
             </li>
             <li>
+                <a href="#excess-donations-table">
+                    <i class='bx bxs-face'></i>
+                    <span class="links_name">Candidate Info</span>
+                </a>
+                <span class="tooltip">Candidate Info</span>
+
+            </li>
+            <li>
                 <a href="#faq">
                     <i class='bx bx-question-mark' ></i>
                     <span class="links_name">FAQ</span>
@@ -86,20 +94,21 @@
               </p>
             </div>
 
-            <div class="map-overlay" id="features">
-                <h2>Zipcode-Based Campaign Contributions</h2>
-                <fieldset id="districtContainer" onchange="renderCandidateMenu()"></fieldset>
-                <fieldset id="candidateContainer" onchange="renderLayer()"></fieldset>
-                <div id="results">
-                    <div id="pd"></div>
-                    <div id="excess"></div>
-                </div>
-
-          </div>
-
         </div>
 
-        <div id="map"></div>
+        <div id="mapContainer">
+            <div id="map"></div>
+
+            <div class="map-overlay" id="features">
+            <h2>Zipcode-Based Campaign Contributions</h2>
+            <fieldset id="districtContainer" onchange="renderCandidateMenu()"></fieldset>
+            <fieldset id="candidateContainer" onchange="renderLayer()"></fieldset>
+            <div id="results">
+                <div id="pd"></div>
+                <div id="excess"></div>
+            </div>
+            </div>
+        </div>
 
         <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
         <div>
