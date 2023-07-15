@@ -9,6 +9,8 @@
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+ <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
   </head>
   <body>
     <div class="sidebar">
@@ -100,7 +102,21 @@
         <div id="map"></div>
 
         <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
+        <div>
+            <h2>
+                Total Donations Received in Excess of Legal Limit
+            </h2>
+            <p>
+                Dallas election code restricts an individual donation to $1,000 for any city council district campaign for each election cycle. <br>
+
+                The following table displays the sum of all contributions that exceed the $1,000 limit. For example, if
+                an individual donated $1,001 to a campaign, the table would show $1 in the "Amount" column.
+            </p>
+        </div>
+        <div id="excess-donations-table"></div>
+
         <script src="interactive.js"></script>
+
         <div id="faq">
             <h2> Frequently Asked Questions</h2>
         </div>

@@ -87,12 +87,26 @@ const toggleableLayerIds = [
     "AmandaSchulz"
 ]
 
-candidateInExcess = {
-    "Chad West" : "$14,498",
-    "Okema Thomas" : "$2000",
-    "Paula Blackmon" : "$10,000",
-    "Gay Willis": "$1,500",
-}
+candidateInExcess = [
+    {
+        "Name" : "Chad West",
+        "Amount" : 14498
+    },
+    {
+        "Name" : "Okema Thomas",
+        "Amount" : 2000
+    },
+    {
+        "Name" : "Paula Blackmon",
+        "Amount" : 10000
+    },
+    {
+        "Name" : "Gay Willis",
+        "Amount" : 1500
+    }
+]
+
+
 
 candidateToMaxContribution = {
     "Chad West" : 44425,
@@ -341,6 +355,15 @@ document.addEventListener("DOMContentLoaded", function() {
   renderFAQ();
 });
 
+var table = new Tabulator("#excess-donations-table", {
+    data:candidateInExcess, //set initial table data
+    layout:"fitColumns",
+    columns:[
+        {title:"Name", field:"Name"},
+        {title:"Amount ($)", field:"Amount"},
+    ],
+});
+
 // wait for map to load before adjusting it
 map.on('load', () => {
     // make a pointer cursor
@@ -370,19 +393,6 @@ map.on('load', () => {
                 document.getElementById('pd').innerHTML = `<p>This candidate did not submit campaign finance records to
                     <a href="https://campfin.dallascityhall.com/">Dallas City Hall</a>
                 </p>`
-            }
-            if (splitByCapitalLetter(layerId) in candidateInExcess) {
-                const excessContainer = document.getElementById("excess")
-                excessContainer.innerHTML =
-                    `<h3> Total Amount Contributed Above $1000 </h3>
-                        <p>
-                            ${splitByCapitalLetter(layerId)}'s campaign received
-                            ${candidateInExcess[splitByCapitalLetter(layerId)]} in excess of the legal limit of $1,000.
-                        </p>
-                        <a href="http://citysecretary2.dallascityhall.com/pdf/code/15A.PDF">
-                            SEC.15A-2(a)(1)
-                        </a>
-                    `
             }
         }
 
