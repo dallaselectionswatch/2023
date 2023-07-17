@@ -105,7 +105,453 @@ candidateInExcess = [
         "Amount" : 1500
     }
 ]
-
+committee_member_donor_dict = [
+  {
+    "Committee Member": "JONATHAN D SAXER",
+    "Amount": 100,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "SHELBY L BOBOSKY",
+    "Amount": 1000,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "ELIZABETH SCHRUPP",
+    "Amount": 1000,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "SANA SYED",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "ROBERT F AGNICH",
+    "Amount": 1000,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "PHILIP J SAHUC",
+    "Amount": 200,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "MICKIE S BRAGALONE",
+    "Amount": 1000,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "KRISTA FARBER WEINSTEIN",
+    "Amount": 100,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "JIM NUGENT",
+    "Amount": 1250,
+    "Campaign": "WILLIS",
+  },
+  {
+    "Committee Member": "MACEY DAVIS",
+    "Amount": 2000,
+    "Campaign": "WILLIS",
+  },
+  {
+    "Committee Member": "BRIAN GRADY MCGAHAN",
+    "Amount": 100,
+    "Campaign": "RESENDEZ",
+  },
+  {
+    "Committee Member": "MICHAEL PRZEKWAS",
+    "Amount": 100,
+    "Campaign": "MORENO",
+  },
+  {
+    "Committee Member": "TODD C HOWARD",
+    "Amount": 250,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "ROSANNE MILLS",
+    "Amount": 103.48,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "WESLEY D KEYES",
+    "Amount": 500,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "RAY A SMITH",
+    "Amount": 200,
+    "Campaign": "WILLIS",
+  },
+  {
+    "Committee Member": "GAILYA SILHAN",
+    "Amount": 200,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "GAY REVI",
+    "Amount": 50,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "JOANNA L HAMPTON",
+    "Amount": 250,
+    "Campaign": "MORENO",
+  },
+  {
+    "Committee Member": "LORIE BLAIR",
+    "Amount": 150,
+    "Campaign": "ATKINS",
+  },
+  {
+    "Committee Member": "MELISSA RUSS KINGSTON",
+    "Amount": 1000,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "BRENT RUBIN",
+    "Amount": 1250,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "DERRIC PEGRAM",
+    "Amount": 50,
+    "Campaign": "NARVAEZ",
+  },
+  {
+    "Committee Member": "BRANDON FRIEDMAN",
+    "Amount": 201.99,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "JOHN MARK DAVIDSON",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "ANGELA KAYE KUTAC",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "ANJULIE PONCE",
+    "Amount": 100,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "JOHN S HAZELTON",
+    "Amount": 500,
+    "Campaign": "WILLIS",
+  },
+  {
+    "Committee Member": "LUCILO A PENA",
+    "Amount": 500,
+    "Campaign": "NARVAEZ",
+  },
+  {
+    "Committee Member": "RODNEY SCHLOSSER",
+    "Amount": 100,
+    "Campaign": "MORENO",
+  },
+  {
+    "Committee Member": "CARMEN R GARCIA",
+    "Amount": 200,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "GLORIA M TARPLEY",
+    "Amount": 1500,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "BETTY J CULBREATH",
+    "Amount": 200,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "LINDSAY BILLINGSLEY",
+    "Amount": 2500,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "KEN MONTGOMERY",
+    "Amount": 100,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "MARY POSS",
+    "Amount": 1000,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "STEVE IDOUX",
+    "Amount": 5000,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "MARK MALVEAUX",
+    "Amount": 5000,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "SUSAN C BOWMAN",
+    "Amount": 50,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "DUPREE SCOVELL",
+    "Amount": 750,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "KATHRYN BAZAN",
+    "Amount": 350,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "PAULA DAY",
+    "Amount": 257.94,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "PATTY COLLINS",
+    "Amount": 200,
+    "Campaign": "BAZALDUA",
+  },
+  {
+    "Committee Member": "RYAN GARCIA",
+    "Amount": 100,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "MARCY C HELFAND",
+    "Amount": 1000,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "ANNE B HAGAN",
+    "Amount": 500,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "BARBARA CLAY",
+    "Amount": 450,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "THOMAS MILLS",
+    "Amount": 250,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "CARL GINSBERG",
+    "Amount": 1000,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "MATTHEW MCDOUGAL",
+    "Amount": 350,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "DIANE SHERMAN",
+    "Amount": 500,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "LARRY OFFUTT",
+    "Amount": 500,
+    "Campaign": "RESENDEZ",
+  },
+  {
+    "Committee Member": "COURTNEY EMICH SPELLICY",
+    "Amount": 100,
+    "Campaign": "ATKINS",
+  },
+  {
+    "Committee Member": "ELAINE VELVIN",
+    "Amount": 50,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "AMY SCHAFFNER",
+    "Amount": 75,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "HEATHER HORNOR",
+    "Amount": 50,
+    "Campaign": "BAZALDUA",
+  },
+  {
+    "Committee Member": "ANNE HARDING",
+    "Amount": 500,
+    "Campaign": "WILLIS",
+  },
+  {
+    "Committee Member": "DONNA DENISON",
+    "Amount": 155.47,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "THOMAS RAY PERRYMAN",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "BETTY HOOEY",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "CHUCK NORCROSS",
+    "Amount": 500,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "CALVERT S COLLINS-BRATTON",
+    "Amount": 1000,
+    "Campaign": "WILLIS",
+  },
+  {
+    "Committee Member": "ARUN AGARWAL",
+    "Amount": 15000,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "STEPHEN JEFFUS",
+    "Amount": 50,
+    "Campaign": "MCGOUGH",
+  },
+  {
+    "Committee Member": "BENJAMIN SETNICK",
+    "Amount": 500,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "JOE RYAN URBY",
+    "Amount": 350,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "JOSEPH F PITCHFORD",
+    "Amount": 1000,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "PETER HAN",
+    "Amount": 1000,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "SHONCY RASPBERRY",
+    "Amount": 500,
+    "Campaign": "NARVAEZ",
+  },
+  {
+    "Committee Member": "ANNETTE ANDERSON",
+    "Amount": 600,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "MICHAEL QUEZADA",
+    "Amount": 250,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "JASON L BROWN",
+    "Amount": 500,
+    "Campaign": "BAZALDUA",
+  },
+  {
+    "Committee Member": "MICHAEL R HUBBARD",
+    "Amount": 50,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "WILLIAM ZIMMERMAN",
+    "Amount": 47.2,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "KYLE P WICK",
+    "Amount": 332.2,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "KEVIN RACHEL",
+    "Amount": 250,
+    "Campaign": "WEST",
+  },
+  {
+    "Committee Member": "JARED K. BURNETT",
+    "Amount": 100,
+    "Campaign": "MORENO",
+  },
+  {
+    "Committee Member": "STACI F. REZNIK",
+    "Amount": 625,
+    "Campaign": "NARVAEZ",
+  },
+  {
+    "Committee Member": "DEREK J SANDLER",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "OSCAR JOYNER",
+    "Amount": 500,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "MIKE SIMS",
+    "Amount": 1000,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "AMY W MONIER",
+    "Amount": 500,
+    "Campaign": "SCHULTZ",
+  },
+  {
+    "Committee Member": "KAREN ROBERTS",
+    "Amount": 51.99,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "ERIN PEAVEY",
+    "Amount": 51.99,
+    "Campaign": "RIDLEY",
+  },
+  {
+    "Committee Member": "LEANDER T JOHNSON",
+    "Amount": 350,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "SARAH P JACKSON",
+    "Amount": 350,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "GARY KUTAC",
+    "Amount": 100,
+    "Campaign": "JOHNSON",
+  },
+  {
+    "Committee Member": "STEVEN T RAMOS",
+    "Amount": 250,
+    "Campaign": "BLACKMON",
+  },
+  {
+    "Committee Member": "SCOTT CHASE",
+    "Amount": 100,
+    "Campaign": "SCHULTZ",
+  }
+]
 
 
 candidateToMaxContribution = {
@@ -356,13 +802,25 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 var table = new Tabulator("#excess-donations-table", {
-    data:candidateInExcess, //set initial table data
+    data:candidateInExcess,
     layout:"fitColumns",
     columns:[
         {title:"Name", field:"Name"},
         {title:"Amount ($)", field:"Amount"},
     ],
 });
+
+
+var table = new Tabulator("#committee-member-donors-table", {
+    data: committee_member_donor_dict,
+    layout:"fitColumns",
+    columns:[
+        {title:"Committee Member", field:"Committee Member"},
+        {title:"Amount ($)", field:"Amount"},
+        {title:"Campaign", field:"Campaign"},
+    ],
+});
+
 
 map.addControl(new mapboxgl.NavigationControl());
 
@@ -384,14 +842,13 @@ map.on('load', () => {
               });
 
               document.getElementById('pd').innerHTML = zipcodes.length ?
-                `<h3> Total Amount Contributed Per Zipcode</h3>
-                      <p>
+                `
+                    <p>
                         ${zipcodes[0].properties[ZIPCODE_PROPERTY_KEY]} donated a total of
                         $${zipcodes[0].properties[splitByCapitalLetter(layerId)]}
                         to ${splitByCapitalLetter(layerId)}'s campaign
-                      </p>`:
-                `<h3> Total Amount Contributed Per Zipcode</h3>
-                <p>Hover over a zipcode!</p>`;
+                    </p>`:
+                `<p>Hover over a zipcode!</p>`;
             } else {
                 document.getElementById('pd').innerHTML = `<p>This candidate did not submit campaign finance records to
                     <a href="https://campfin.dallascityhall.com/">Dallas City Hall</a>

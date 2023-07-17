@@ -160,10 +160,10 @@ body{
     height: 500px;
     padding-top: 5%;
 }
-select, legend{
+select, fieldset{
     text-align: center;
-    width: 100%;
-    font-size: 18px;
+    font-size: 12px;
+    display: inline-block;
 }
 .map-overlay {
     position: absolute;
@@ -175,15 +175,19 @@ select, legend{
     z-index: 1;
     height: auto;
     background-color: #fff;
-    text-align: center;
+    max-width: 150px;
 }
-#features {
+#features{
     top: 0;
     height: auto;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
     width: 250px;
     border-radius: 5px;
-
+    display: inline-block;
+}
+#features p{
+    font-size: 12px;
 }
 .block {
   width: 100%;
