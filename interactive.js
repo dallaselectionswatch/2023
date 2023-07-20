@@ -11,11 +11,21 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaW1lcmNhZG8iLCJhIjoiY2xlcm1mZmxkMGNpMjN0cXRhO
 // property key that stores zipcode in GeoJSON
 ZIPCODE_PROPERTY_KEY = "ZCTA5CE10"
 
-FILL_OPACITY = 0.85
-MAX_ZIPCODE_CONTRIBUTION = 85000
+var FILL_OPACITY = 0.85
+var MAX_ZIPCODE_CONTRIBUTION = 85000
 var CENTER_OF_MAP = [-96.823081, 32.728088]
-ZOOM_LEVEL = 8.3;
+var ZOOM_LEVEL = 8.3;
 
+// create map
+const map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
+    pitch: 20,
+    bearing: 0,
+    center: CENTER_OF_MAP,
+    zoom: ZOOM_LEVEL
+});
+map.addControl(new mapboxgl.NavigationControl());
 /*
     candidate names must match those of labelIDs in mapbox
     candidates who do not have campFin data render an info box instead of campFin data
@@ -43,45 +53,31 @@ const toggleableLayerIds = [
     "ChadWest",
     "AlbertMata",
     "FelixGriggs",
-
     "JesusMoreno",
-
     "JoeTave",
     "JohnSims",
     "ZarinGracey",
     "AugustDoyle",
-
     "CarolynArnold",
     "JamieSmith",
-
     "YolandaWilliams",
-
     "OmarNarvaez",
     "MonicaRAlonzo",
     "SidneyRoblesMartinez",
-
     "AdamBazaldua",
     "OkemaThomas",
-
     "EricJohnson",
-
     "TennellAtkins",
-
     "KendraMadison",
     "PaulaBlackmon",
-
     "KathyStewart",
     "BrianHasenbauer",
     "ChrisCarter",
-
     "CandyEvans",
     "JaynieSchultz",
-
     "CaraMendelsohn",
-
     "GayWillis",
     "PriscillaShacklett",
-
     "PaulRidley",
     "KendalRichardson",
     "AmandaSchulz"
@@ -597,6 +593,10 @@ faq_dict = {
 "Are there any future plans or expansions for your project?" : "After the votes are counted and the city council members are placed in office, they will begin voting on key ordinances that affect more than just their respective district. We'll do our part to report any potential quid-pro-quo relationships between council-members and their out-of-district donors. We will also review who each council member nominates to voting positions throughout the many committees that decide on key funding, oversight, and urban planning for Dallas.",
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  renderFAQ();
+});
+
 function splitByCapitalLetter(name) {
     return name.split(/(?=[A-Z])/).join(" ")
 }
@@ -660,8 +660,6 @@ function renderCandidateMenu(){
         candidateMenu.onchange = "renderLayer()"
         candidateMenu.id = "layer"
     }
-
-
     // set a default prompt for dropdown
     var defaultOption = document.createElement("option");
     defaultOption.text = "Select a Candidate"
@@ -681,8 +679,6 @@ function renderCandidateMenu(){
         candidateMenu.add(option);
     }
 }
-
-
 
 // clear the map of all layers
 function vanishAllLayers() {
@@ -706,64 +702,14 @@ function renderLayer() {
             A = Opacity
         */
         color_gradient =
-        [
-          "case",
-          [
-            "==",
-            ["get", candidateName],
-            0
-          ],
-          "#f5f1f0",
-          ["has", candidateName],
-          [
-            "rgba",
-            [
-              "-",
-              200,
-              [
-                "/",
-                [
-                  "*",
-                  200,
-                  ["get", candidateName]
-                ],
-                candidateToMaxContribution[candidateName]
-              ]
-            ],
-            [
-              "-",
-              255,
-              [
-                "/",
-                [
-                  "*",
-                  200,
-                  ["get", candidateName]
-                ],
-                candidateToMaxContribution[candidateName]
-              ]
-            ],
-            255,
-            0.9
-          ],
-          "#ffd2c1"
-        ]
+        ["case",["==",["get", candidateName],0],"#f5f1f0",["has", candidateName],["rgba",["-",200,["/",["*",200,["get",
+         candidateName]],candidateToMaxContribution[candidateName]]],["-",255,["/",["*",200,["get", candidateName]],
+         candidateToMaxContribution[candidateName]]],255,0.9],"#ffd2c1"]
         map.setPaintProperty(layer.value, 'fill-extrusion-color', color_gradient)
     }
 }
 
 
-// create map
-const map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
-    pitch: 20,
-    bearing: 0,
-    center: CENTER_OF_MAP,
-    zoom: ZOOM_LEVEL
-});
-
-// Render the FAQ section
 function renderFAQ() {
     var faq_list = document.getElementById("faq")
     for (var q in faq_dict) {
@@ -792,24 +738,18 @@ function toggle() {
   }
 }
 
-
 function centerMap() {
     map.flyTo({center:CENTER_OF_MAP, zoom: ZOOM_LEVEL});
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  renderFAQ();
-});
 
 var table = new Tabulator("#excess-donations-table", {
     data:candidateInExcess,
     layout:"fitColumns",
     columns:[
-        {title:"Name", field:"Name"},
+        {title:"Council Member", field:"Name"},
         {title:"Amount ($)", field:"Amount"},
     ],
 });
-
 
 var table = new Tabulator("#committee-member-donors-table", {
     data: committee_member_donor_dict,
@@ -817,17 +757,11 @@ var table = new Tabulator("#committee-member-donors-table", {
     columns:[
         {title:"Committee Member", field:"Committee Member"},
         {title:"Amount ($)", field:"Amount"},
-        {title:"Campaign", field:"Campaign"},
+        {title:"Council Member", field:"Campaign"},
     ],
 });
 
-
-map.addControl(new mapboxgl.NavigationControl());
-
-
-// wait for map to load before adjusting it
 map.on('load', () => {
-    // make a pointer cursor
     map.getCanvas().style.cursor = 'default';
 
     // if mouse hovers over a zipcode, display their total contributions for the selected candidate

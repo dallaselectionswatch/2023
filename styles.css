@@ -186,8 +186,8 @@ select, fieldset{
     border-radius: 5px;
     display: inline-block;
 }
-#features p{
-    font-size: 12px;
+p{
+    font-size: 16px;
 }
 .block {
   width: 100%;
