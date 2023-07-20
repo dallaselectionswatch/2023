@@ -201,3 +201,6 @@ p{
 #mapContainer{
     position: relative;
 }
+h3 {
+    margin-top: 15px;
+}
