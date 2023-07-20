@@ -17,7 +17,7 @@ var CENTER_OF_MAP = [-96.823081, 32.728088]
 var ZOOM_LEVEL = 8.3;
 
 // create map
-const map = new mapboxgl.Map({
+var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/imercado/clex4ooxe001201o2205su3eg/draft',
     pitch: 20,
@@ -30,7 +30,7 @@ map.addControl(new mapboxgl.NavigationControl());
     candidate names must match those of labelIDs in mapbox
     candidates who do not have campFin data render an info box instead of campFin data
 */
-const district_ballot = new Map([
+var district_ballot = new Map([
  ["Mayor", ["EricJohnson"]],
  ["District 1" , ["ChadWest", "AlbertMata", "FelixGriggs"]],
  ["District 2" , ["JesusMoreno", "SukhbirKaur"]],
@@ -49,7 +49,7 @@ const district_ballot = new Map([
 ])
 
 // corresponds to layer ID found on MapboxGL
-const toggleableLayerIds = [
+var toggleableLayerIds = [
     "ChadWest",
     "AlbertMata",
     "FelixGriggs",
@@ -597,6 +597,25 @@ document.addEventListener("DOMContentLoaded", function() {
   renderFAQ();
 });
 
+var table = new Tabulator("#excess-donations-table", {
+    data:candidateInExcess,
+    layout:"fitColumns",
+    columns:[
+        {title:"Council Member", field:"Name"},
+        {title:"Amount ($)", field:"Amount"},
+    ],
+});
+
+var table = new Tabulator("#committee-member-donors-table", {
+    data: committee_member_donor_dict,
+    layout:"fitColumns",
+    columns:[
+        {title:"Committee Member", field:"Committee Member"},
+        {title:"Amount ($)", field:"Amount"},
+        {title:"Council Member", field:"Campaign"},
+    ],
+});
+
 function splitByCapitalLetter(name) {
     return name.split(/(?=[A-Z])/).join(" ")
 }
@@ -648,8 +667,8 @@ district_ballot.forEach((_value, key) => {
 })
 
 function renderCandidateMenu(){
-    const district = document.getElementById('district');
-    const candidates = district_ballot.get(district.value)
+    var district = document.getElementById('district');
+    var candidates = district_ballot.get(district.value)
     // create dropdown element to display the candidates
     var candidateMenu
     if (document.getElementById("layer")) {
@@ -689,7 +708,7 @@ function vanishAllLayers() {
 
 // make selected candidate layer visible
 function renderLayer() {
-    const layer = document.getElementById('layer');
+    var layer = document.getElementById('layer');
     vanishAllLayers()
     // check if selected candidate has an existing layer
     if (toggleableLayerIds.includes(layer.value)) {
@@ -727,7 +746,7 @@ function renderFAQ() {
 
 function toggle() {
   // Declare variable menu
-  let menu = document.getElementById("side-menu");
+  var menu = document.getElementById("side-menu");
 
   // toggle code
   if (menu.style.display === "block") {
@@ -742,25 +761,6 @@ function centerMap() {
     map.flyTo({center:CENTER_OF_MAP, zoom: ZOOM_LEVEL});
 }
 
-var table = new Tabulator("#excess-donations-table", {
-    data:candidateInExcess,
-    layout:"fitColumns",
-    columns:[
-        {title:"Council Member", field:"Name"},
-        {title:"Amount ($)", field:"Amount"},
-    ],
-});
-
-var table = new Tabulator("#committee-member-donors-table", {
-    data: committee_member_donor_dict,
-    layout:"fitColumns",
-    columns:[
-        {title:"Committee Member", field:"Committee Member"},
-        {title:"Amount ($)", field:"Amount"},
-        {title:"Council Member", field:"Campaign"},
-    ],
-});
-
 map.on('load', () => {
     map.getCanvas().style.cursor = 'default';
 
@@ -771,7 +771,7 @@ map.on('load', () => {
             layerId = layer.value
             if (toggleableLayerIds.includes(layerId)){
 
-              const zipcodes = map.queryRenderedFeatures(event.point, {
+              var zipcodes = map.queryRenderedFeatures(event.point, {
                   layers: [layerId]
               });
 
