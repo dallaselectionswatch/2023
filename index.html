@@ -96,8 +96,12 @@
             <div id="map"></div>
 
             <div class="map-overlay" id="features">
-                <fieldset id="districtContainer" onchange="renderCandidateMenu()"></fieldset>
-                <fieldset id="candidateContainer" onchange="renderLayer()"></fieldset>
+                <select id="districtContainer" onchange="renderCandidateMenu()">
+                    <option>Select a District...</option>
+                </select>
+                <select id="candidateContainer" onchange="renderLayer()">
+                    <option>Select a Candidate...</option>
+                </select>
                 <div id="results">
                     <div id="pd"></div>
                 </div>

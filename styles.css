@@ -160,31 +160,34 @@ body{
     height: 500px;
     padding-top: 5%;
 }
-select, fieldset{
-    text-align: center;
+select{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #8c42fb; /* Set background color to blue */
+    color: white; /* Set text color to white */
     font-size: 12px;
-    display: inline-block;
+    width: 100%; /* Set width to fill the container */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    text-align: center;
 }
 .map-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
-    margin-left: 20px;
-    font-family: "Poppins", sans-serif;
-    z-index: 1;
-    height: auto;
-    background-color: #fff;
-    max-width: 150px;
+
 }
 #features{
     top: 0;
+    left: 0;
     height: auto;
     margin-top: 10px;
     margin-left: 20px;
     width: 250px;
     border-radius: 5px;
     display: inline-block;
+    position: absolute;
+    font-family: "Poppins", sans-serif;
+    z-index: 1;
+    background-color: #fff;
+    max-width: 150px;
 }
 p{
     font-size: 16px;

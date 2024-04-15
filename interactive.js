@@ -31,22 +31,22 @@ map.addControl(new mapboxgl.NavigationControl());
     candidates who do not have campFin data render an info box instead of campFin data
 */
 var district_ballot = new Map([
- ["Mayor", ["EricJohnson"]],
- ['All Candidates' , ["JosephF.Miller", "AmandaSchulz", "PaulRidley","GayWillis", "PriscillaShacklett","CaraMendelsohn","JaynieSchultz", "CandyEvans","KathyStewart", "BrianHasenbauer", "SirranoKeithBaldeo", "ChrisCarter","KendraMadison", "PaulaBlackmon","SubrinaLynnBrenham", "Davante\"Shawt\"Peters", "TennellAtkins","TracyDotieHill", "AdamBazaldua", "MarvinECrenshaw", "OkemaThomas","TonyCarrillo", "OmarNarvaez", "SidneyRoblesMartinez", "MonicaRAlonzo","TerryPerkins", "JaimeResendez", "YolandaWilliams","CarolynArnold", "JamieSmith","JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides","ChadWest", "AlbertMata", "FelixGriggs", "JesusMoreno", "SukhbirKaur"]],
- ["District 1" , ["ChadWest", "AlbertMata", "FelixGriggs"]],
- ["District 2" , ["JesusMoreno", "SukhbirKaur"]],
- ["District 3" , ["JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides"]],
- ["District 4" , ["CarolynArnold", "JamieSmith"]],
- ["District 5" , ["TerryPerkins", "JaimeResendez", "YolandaWilliams"]],
- ["District 6" , ["TonyCarrillo", "OmarNarvaez", "SidneyRoblesMartinez", "MonicaRAlonzo"]],
- ["District 7" , ["TracyDotieHill", "AdamBazaldua", "MarvinECrenshaw", "OkemaThomas"]],
- ["District 8" , ["SubrinaLynnBrenham", "Davante\"Shawt\"Peters", "TennellAtkins"]],
- ["District 9" , ["KendraMadison", "PaulaBlackmon"]],
- ["District 10" , ["KathyStewart", "BrianHasenbauer", "SirranoKeithBaldeo", "ChrisCarter"]],
- ["District 11" , ["JaynieSchultz", "CandyEvans"]],
- ["District 12" , ["CaraMendelsohn"]],
- ["District 13" , ["GayWillis", "PriscillaShacklett"]],
- ["District 14" , ["JosephF.Miller", "AmandaSchulz", "PaulRidley"]]
+     ['All Candidates' , ["JosephF.Miller", "AmandaSchulz", "PaulRidley","GayWillis", "PriscillaShacklett","CaraMendelsohn","JaynieSchultz", "CandyEvans","KathyStewart", "BrianHasenbauer", "SirranoKeithBaldeo", "ChrisCarter","KendraMadison", "PaulaBlackmon","SubrinaLynnBrenham", "Davante\"Shawt\"Peters", "TennellAtkins","TracyDotieHill", "AdamBazaldua", "MarvinECrenshaw", "OkemaThomas","TonyCarrillo", "OmarNarvaez", "SidneyRoblesMartinez", "MonicaRAlonzo","TerryPerkins", "JaimeResendez", "YolandaWilliams","CarolynArnold", "JamieSmith","JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides","ChadWest", "AlbertMata", "FelixGriggs", "JesusMoreno", "SukhbirKaur"]],
+     ["Mayor", ["EricJohnson"]],
+     ["District 1" , ["ChadWest", "AlbertMata", "FelixGriggs"]],
+     ["District 2" , ["JesusMoreno", "SukhbirKaur"]],
+     ["District 3" , ["JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides"]],
+     ["District 4" , ["CarolynArnold", "JamieSmith"]],
+     ["District 5" , ["TerryPerkins", "JaimeResendez", "YolandaWilliams"]],
+     ["District 6" , ["TonyCarrillo", "OmarNarvaez", "SidneyRoblesMartinez", "MonicaRAlonzo"]],
+     ["District 7" , ["TracyDotieHill", "AdamBazaldua", "MarvinECrenshaw", "OkemaThomas"]],
+     ["District 8" , ["SubrinaLynnBrenham", "Davante\"Shawt\"Peters", "TennellAtkins"]],
+     ["District 9" , ["KendraMadison", "PaulaBlackmon"]],
+     ["District 10" , ["KathyStewart", "BrianHasenbauer", "SirranoKeithBaldeo", "ChrisCarter"]],
+     ["District 11" , ["JaynieSchultz", "CandyEvans"]],
+     ["District 12" , ["CaraMendelsohn"]],
+     ["District 13" , ["GayWillis", "PriscillaShacklett"]],
+     ["District 14" , ["JosephF.Miller", "AmandaSchulz", "PaulRidley"]]
 ])
 
 // corresponds to layer ID found on MapboxGL
@@ -648,16 +648,7 @@ function toggleMenu(){
 }
 
 // create dropdown element to display the candidates
-var district_menu = document.createElement("select");
-district_menu.onchange = "renderCandidateMenu()"
-district_menu.id = "district"
-
-// set a default prompt for dropdown
-var defaultDistrict = document.createElement("option");
-var defaultDistrictPrompt = "Select a District"
-defaultDistrict.text = defaultDistrictPrompt
-district_menu.appendChild(defaultDistrict)
-document.getElementById("districtContainer").appendChild(district_menu)
+var district_menu = document.getElementById("districtContainer")
 
 district_ballot.forEach((_value, key) => {
     var option = document.createElement("option");
@@ -668,35 +659,26 @@ district_ballot.forEach((_value, key) => {
 })
 
 function renderCandidateMenu(){
-    var district = document.getElementById('district');
-    var candidates = district_ballot.get(district.value)
-    // create dropdown element to display the candidates
-    var candidateMenu
-    if (document.getElementById("layer")) {
-        candidateMenu = document.getElementById("layer")
-        document.getElementById('layer').options.length = 0;
-    } else{
-        candidateMenu = document.createElement("select");
-        candidateMenu.onchange = "renderLayer()"
-        candidateMenu.id = "layer"
-    }
-    // set a default prompt for dropdown
-    var defaultOption = document.createElement("option");
-    defaultOption.text = "Select a Candidate"
-    candidateMenu.appendChild(defaultOption)
+    // Get reference to both dropdowns
+    var district = document.getElementById('districtContainer').value;
+    var candidateMenu = document.getElementById('candidateContainer');
 
-    var promptLabel = document.createElement("label")
-    promptLabel.for = "menu"
-    document.getElementById("candidateContainer").appendChild(candidateMenu)
-    candidateMenu.appendChild(promptLabel)
+    // Clear existing options
+    candidateMenu.innerHTML = '';
 
-    // add each candidate to dropdown element
-    for (x in candidates) {
-        var option = document.createElement("option");
-        option.text = splitByCapitalLetter(candidates[x])
-        option.id = candidates[x]
-        option.value = candidates[x]
-        candidateMenu.add(option);
+    // Add default option
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Select a Candidate...';
+    candidateMenu.appendChild(defaultOption);
+
+    if (district && district_ballot.get(district)) {
+        district_ballot.get(district).forEach(option => {
+          const candidateElement = document.createElement('option');
+          candidateElement.value = option;
+          candidateElement.textContent = splitByCapitalLetter(option);
+          candidateMenu.appendChild(candidateElement);
+        });
     }
 }
 
@@ -709,12 +691,12 @@ function vanishAllLayers() {
 
 // make selected candidate layer visible
 function renderLayer() {
-    var layer = document.getElementById('layer');
+    var layer = document.getElementById('candidateContainer').value;
     vanishAllLayers()
     // check if selected candidate has an existing layer
-    if (toggleableLayerIds.includes(layer.value)) {
-        map.setLayoutProperty(layer.value, 'visibility', 'visible')
-        candidateName = splitByCapitalLetter(layer.value)
+    if (toggleableLayerIds.includes(layer)) {
+        map.setLayoutProperty(layer, 'visibility', 'visible')
+        candidateName = splitByCapitalLetter(layer)
 
         /*
             R = G = 255 - 200 * contribution / maxContribution
@@ -725,7 +707,7 @@ function renderLayer() {
         ["case",["==",["get", candidateName],0],"#f5f1f0",["has", candidateName],["rgba",["-",200,["/",["*",200,["get",
          candidateName]],candidateToMaxContribution[candidateName]]],["-",255,["/",["*",200,["get", candidateName]],
          candidateToMaxContribution[candidateName]]],255,0.9],"#ffd2c1"]
-        map.setPaintProperty(layer.value, 'fill-extrusion-color', color_gradient)
+        map.setPaintProperty(layer, 'fill-extrusion-color', color_gradient)
     }
 }
 
@@ -767,9 +749,9 @@ map.on('load', () => {
 
     // if mouse hovers over a zipcode, display their total contributions for the selected candidate
     map.on('mousemove', (event) => {
-        layer = document.getElementById('layer')
-        if (layer) {
-            layerId = layer.value
+        candidate = document.getElementById('candidateContainer').value
+        if (candidate) {
+            layerId = candidate
             if (toggleableLayerIds.includes(layerId)){
 
               var zipcodes = map.queryRenderedFeatures(event.point, {
