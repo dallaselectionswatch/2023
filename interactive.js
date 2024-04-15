@@ -32,6 +32,7 @@ map.addControl(new mapboxgl.NavigationControl());
 */
 var district_ballot = new Map([
  ["Mayor", ["EricJohnson"]],
+ ['All Candidates' , ["JosephF.Miller", "AmandaSchulz", "PaulRidley","GayWillis", "PriscillaShacklett","CaraMendelsohn","JaynieSchultz", "CandyEvans","KathyStewart", "BrianHasenbauer", "SirranoKeithBaldeo", "ChrisCarter","KendraMadison", "PaulaBlackmon","SubrinaLynnBrenham", "Davante\"Shawt\"Peters", "TennellAtkins","TracyDotieHill", "AdamBazaldua", "MarvinECrenshaw", "OkemaThomas","TonyCarrillo", "OmarNarvaez", "SidneyRoblesMartinez", "MonicaRAlonzo","TerryPerkins", "JaimeResendez", "YolandaWilliams","CarolynArnold", "JamieSmith","JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides","ChadWest", "AlbertMata", "FelixGriggs", "JesusMoreno", "SukhbirKaur"]],
  ["District 1" , ["ChadWest", "AlbertMata", "FelixGriggs"]],
  ["District 2" , ["JesusMoreno", "SukhbirKaur"]],
  ["District 3" , ["JohnSims", "JoeTave", "ZarinGracey", "AugustDoyle", "DeniseBenavides"]],
