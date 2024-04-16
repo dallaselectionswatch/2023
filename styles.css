@@ -139,10 +139,9 @@ body{
     position: absolute;
     height: 100%;
     width: calc(100% - 72px);
-    left: 60px;
+    left: 65px;
     overflow: scroll;
     z-index: 0;
-    margin: 12px;
     padding-bottom: 10px;
 }
 
