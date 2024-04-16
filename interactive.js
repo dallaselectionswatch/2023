@@ -1,6 +1,12 @@
 /*
     This file renders and manages the interactive elements of a mapbox fill-extrusion display
     The map corresponds to donations made to candidates for council positions in Dallas for the May 2023 election
+
+    D. Castillo - Map Info Window
+        Round the edges of the info box
+        Change the background color OR Separate the box from the dropdown windows
+        Use margins to separate the text from the walls of the box
+        Center the Text
 */
 
 
@@ -766,10 +772,6 @@ map.on('load', () => {
                         to ${splitByCapitalLetter(layerId)}'s campaign
                     </p>`:
                 `<p>Hover over a zipcode!</p>`;
-            } else {
-                document.getElementById('pd').innerHTML = `<p>This candidate did not submit campaign finance records to
-                    <a href="https://campfin.dallascityhall.com/">Dallas City Hall</a>
-                </p>`
             }
         }
 

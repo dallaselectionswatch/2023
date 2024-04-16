@@ -139,11 +139,11 @@ body{
 .home_content{
     position: absolute;
     height: 100%;
-    width: calc(100% - 100px);
+    width: calc(100% - 116px);
     left: 92px;
     overflow: scroll;
     z-index: 0;
-    margin: 4px;
+    margin: 12px;
     padding-bottom: 10px;
 }
 
@@ -171,31 +171,44 @@ select{
     box-sizing: border-box; /* Ensure padding is included in the width */
     text-align: center;
 }
-.map-overlay {
-
-}
 #features{
     top: 0;
     left: 0;
     height: auto;
     margin-top: 10px;
     margin-left: 20px;
-    width: 250px;
     border-radius: 5px;
     display: inline-block;
     position: absolute;
     font-family: "Poppins", sans-serif;
     z-index: 1;
-    background-color: #fff;
-    max-width: 150px;
+    background-color: #8c42fb;
+    color: #fff;
+    max-width: 200px;
+}
+#pd{
+    margin: 3px;
+    text-align: center;
+    background-color: #ba8efd;
+}
+.section{
+    border: 1px solid #eaeaea;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 15px;
 }
 p{
     font-size: 16px;
+    margin: 5px;
+}
+#banner{
+    text-align: center;
 }
 .block {
   width: 100%;
   border: none;
-  background-color: #4264fb;
+  background-color: #8c42fb;
   color: white;
   padding: 14px 28px;
   cursor: pointer;
@@ -203,7 +216,4 @@ p{
 }
 #mapContainer{
     position: relative;
-}
-h3 {
-    margin-top: 15px;
 }
