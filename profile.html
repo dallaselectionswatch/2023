@@ -30,8 +30,8 @@
         <h4>
             <i>District 8 highlighted in green</i>
         </h4>
-        <label for="mapCycleFilter">Filter by Election Cycle:</label>
-        <select id="mapCycleFilter" onchange="filterImages()">
+        <label for="map-cycleFilter">Filter by Election Cycle:</label>
+        <select id="map-cycleFilter" onchange="filterImages()">
             <option value="2023-2025" selected>2023-2025</option>
             <option value="2021-2023">2021-2023</option>
             <option value="2019-2021">2019-2021</option>
@@ -53,6 +53,14 @@
         <h4>
             <i>Contributions made by the same person have been grouped together.</i>
         </h4>
+        <label for="agg-cycleFilter">Filter by Election Cycle:</label>
+        <select id="agg-cycleFilter" onchange="filterAggTable()">
+            <option value="all">All Data</option>
+            <option value="2017 - 2019">2017 - 2019</option>
+            <option value="2019-2021">2019-2021</option>
+            <option value="2021-2023">2021-2023</option>
+            <option value="2023-2025">2023-2025</option>
+        </select>
         <div id="aggregated-contributions-table"></div>
     </div>
 
@@ -60,8 +68,8 @@
         <h2>
             All Contributions
         </h2>
-        <label for="cycleFilter">Filter by Election Cycle:</label>
-        <select id="cycleFilter" onchange="filterTable()">
+        <label for="raw-cycleFilter">Filter by Election Cycle:</label>
+        <select id="raw-cycleFilter" onchange="filterRawTable()">
             <option value="all">All Data</option>
             <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
