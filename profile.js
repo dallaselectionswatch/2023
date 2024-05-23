@@ -3,7 +3,7 @@ let originalData = [];
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('atkins_contributions.json')
+    fetch('Candidates/Atkins/Data/atkins_contributions.json')
         .then(response => response.json())
         .then(data => {
             originalData = data;
@@ -48,4 +48,21 @@ function filterTable() {
 // Download button event listener
 document.getElementById('download-csv').addEventListener('click', function() {
     window.table.download("csv", "filtered_data.csv");
+});
+
+// Function to show the image corresponding to the selected election cycle
+function filterImages() {
+    var selectedCycle = document.getElementById("mapCycleFilter").value;
+    var images = document.querySelectorAll("#image-container img");
+    images.forEach(function(img) {
+        img.classList.remove("active");
+        if (img.id === "img-" + selectedCycle) {
+            img.classList.add("active");
+        }
+    });
+}
+
+// Show the default image on page load
+document.addEventListener("DOMContentLoaded", function() {
+    filterImages();
 });

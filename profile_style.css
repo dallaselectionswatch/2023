@@ -40,3 +40,11 @@ table {
 #yearFilter {
     margin-bottom: 20px;
 }
+#image-container img {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+#image-container img.active {
+    display: block;
+}
