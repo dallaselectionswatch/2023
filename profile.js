@@ -3,7 +3,7 @@ let originalData = [];
 let aggregatedData = [];
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('Candidates/Atkins/Data/atkins_contributions.json')
+    fetch('candidates/Atkins/Data/atkins_contributions.json')
         .then(response => response.json())
         .then(data => {
             originalData = data;
@@ -51,7 +51,7 @@ document.getElementById('download-csv').addEventListener('click', function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('Candidates/Atkins/Data/atkins_contributions.json')
+    fetch('candidates/Atkins/Data/atkins_contributions.json')
         .then(response => response.json())
         .then(data => {
             // Store raw data globally
