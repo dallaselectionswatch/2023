@@ -8,8 +8,8 @@ import json
 import pandas as pd
 import numpy as np
 
-zips_candContributions_filename = '../Data/HelperCleanedContributions.xlsx'
-geoJSON_filename = '../Data/texas-zip-codes-_1613.geojson'
+zips_candContributions_filename = '../data/HelperCleanedContributions.xlsx'
+geoJSON_filename = '../data/texas-zip-codes-_1613.geojson'
 column_index_where_data_begins = 5
 
 """
@@ -67,7 +67,7 @@ for feat in all_zips_data["features"]:
         continue
 
 #Write result to a new file
-with open('../Data/zipcodes_contributions.geojson', 'w') as f:
+with open('../data/zipcodes_contributions.geojson', 'w') as f:
     json.dump(zips_contributions_data, f)
 
 # Print Zips where an error occurred

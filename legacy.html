@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dallas 2022 - 2023 Campaign Contributions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+ <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+  </head>
+  <body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <div class="logo_name">Dallas Elections Watch</div>
+            </div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#about">
+                    <i class='bx bx-info-circle' ></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="#zipcode-map-header">
+                    <i class='bx bxs-compass' ></i>
+                    <span class="links_name">Map</span>
+                </a>
+                <span class="tooltip">Map</span>
+            </li>
+            <li>
+                <a href="#excess-donations">
+                    <i class='bx bxs-face'></i>
+                    <span class="links_name">Candidate Info</span>
+                </a>
+                <span class="tooltip">Candidate Info</span>
+
+            </li>
+            <li>
+                <a href="#faq">
+                    <i class='bx bx-question-mark' ></i>
+                    <span class="links_name">FAQ</span>
+                </a>
+                <span class="tooltip">FAQ</span>
+            </li>
+        </ul>
+    </div>
+    <div class="home_content">
+        <div id="banner">
+            <h1>
+                Dallas Elections Watch
+            </h1>
+            <h4>
+                est. 2022
+            </h4>
+        </div>
+
+        <div id="candidateMenu">
+
+          <div id="about" class="section">
+              <h3 id="directionsHeader" > How to Use the Map</h3>
+              <p id="directions">
+                  1. Select A District from the dropdown menu. <br>
+                  2. Select A Candidate from the dropdown menu <br>
+                  3. Click on a zipcode to see how much they donated to that candidate.<br>
+
+                  <h3> Not sure which district you live in? </h3> Click the link below and type in your address to find out! <br>
+                    <a href="https://dallasgis.maps.arcgis.com/apps/instant/minimalist/index.html?appid=807494fddae04830852e4b13e6847979/">
+                        Find My District
+                    </a>
+
+              </p>
+            </div>
+
+        </div>
+
+        <p style="font-size: 20px; color:#1F9AFE;">
+            <a href="profile.html" target="_self">Candidate Profile</a>
+        </p>
+
+        <div class="section">
+            <h3 id="zipcode-map-header">Zipcode-Based Campaign Contributions</h3>
+            <div id="mapContainer">
+                <div id="map"></div>
+                <div class="map-overlay" id="features">
+                    <select id="districtContainer" onchange="renderCandidateMenu()">
+                        <option>Select a District...</option>
+                    </select>
+                    <select id="candidateContainer" onchange="renderLayer()">
+                        <option>Select a Candidate...</option>
+                    </select>
+                    <div id="results">
+                        <div id="pd"></div>
+                    </div>
+                </div>
+            </div>
+
+        <button id="centerMap" class="block" onclick="centerMap()"> Center the Map </button>
+
+        </div>
+
+        <div id="excess-donations" class="section">
+            <h3>
+                Total Donations Received in Excess of Legal Limit
+            </h3>
+            <p>
+                Dallas election code restricts an individual donation to $1,000 for any city council district campaign for each election cycle. <br>
+
+                The following table displays the sum of all contributions that exceed the $1,000 limit. For example, if
+                an individual donated $1,001 to a campaign, the table would show $1 in the "Amount" column.
+            </p>
+            <div id="excess-donations-table"></div>
+        </div>
+
+        <div id="committee-member-donors-container" class="section">
+            <h3>
+                Donations Made Between Appointees and their Nominators
+            </h3>
+            <p>
+                Dallas City Council nominates citizens to positions on boards and committees that influence local
+                government on topics ranging from economic revitalization to housing and homelessness.
+
+                The following table is based on the reported campaign finance documents from each council-member. Each
+                row denotes an individual who made a donation to a council-member who later nominated that donor to a position on a board or committee.
+            </p>
+            <div id="committee-member-donors-table"></div>
+        </div>
+
+
+        <script src="interactive.js"></script>
+
+        <div id="faq" class="section">
+            <h3> Frequently Asked Questions</h3>
+        </div>
+
+    </div>
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+
+        btn.onclick = function() {
+            sidebar.classList.toggle("active")
+        }
+    </script>
+  </body>
+
+</html>
+
