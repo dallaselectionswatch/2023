@@ -1,27 +1,20 @@
-# Getting Started (mac)
+# Dallas Campaign Finance Oversight
 
-## Python
-Check to see if you have python installed
-'python3 -V'
+## Purpose
+This repo will serve as a reliable source of campaign finance data for the Dallas city council and mayor's office.
 
-If you don't have it, try this website [Guide to Python](https://docs.python-guide.org/starting/install3/osx/)
+## Data Sources
+1. https://campfin.dallascityhall.com/
+2. https://egis.dallascityhall.com/resources/shapefileDownload.aspx
 
-Check to see if you have pip installed
-'pip --version'
-or
-'pip3 --version'
+## What have we done to this data?
+This data has been taken from the aforementioned authoritative source and has been validated, verified, and aggregated into collections for each city council-person.
+- Duplicate records have been removed
+- Addresses have been geocoded into lat/long coordinates
+- Donors who make multiple financial contributions have been identified and their donations have been summed per election year.
 
-If you don't have pip, follow these commands
-'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-'python3 get-pip.py'
+## Developers
+This site currently uses vanilla JS, HTML, and CSS.
 
-Run the following commands to install the correct libraries
-'pip install pandas' or 'pip3 install pandas'
-'pip install numpy' or 'pip3 install numpy'
-
-## Running the website locally
-Navigate to the root directory via the command line, where you should see the index.html file
-Run the following command 'python -m http. server 8000'
-Open a browser and visit [localhost:8000](localhost:8000)
-
+However, this project is in the process of being modernized toward a MERN framework
 
