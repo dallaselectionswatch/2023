@@ -148,3 +148,52 @@ function filterImages() {
 document.addEventListener("DOMContentLoaded", function() {
     filterImages();
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('src/candidates/Atkins/Data/atkins_contributions.json')
+        .then(response => response.json())
+        .then(data => {
+            // Count the number of records with an amount less than 100
+            const count = data.filter(item => item["Amount:"] < 100).length;
+            // Calculate the percentage
+            const percentage = Math.round((count / data.length) * 100);
+
+            // Now, assuming you want to display this percentage in the first green box:
+            const greenBox = document.querySelector('.green');
+            greenBox.textContent = `${percentage}%`;
+        })
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('src/candidates/Atkins/Data/atkins_contributions.json')
+        .then(response => response.json())
+        .then(data => {
+            // Count the number of records with an amount greater than 1000
+            const count = data.filter(item => item["Amount:"] >= 1000).length;
+            // Calculate the percentage
+            const percentage = Math.round((count / data.length) * 100);
+
+            // Now, assuming you want to display this percentage in the first green box:
+            const greenBox = document.getElementById('BigDonorSupport');
+            greenBox.textContent = `${percentage}%`;
+        })
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('src/candidates/Atkins/Data/atkins_contributions.json')
+        .then(response => response.json())
+        .then(data => {
+            // Count the number of records with "Dallas" in the address
+            const dallas_count = data.filter(item => item.Address.includes("Dallas")).length;
+
+            // Subtract count from the total in order to get the records that DO NOT originate from Dallas
+            const non_dallas_count = data.length - dallas_count
+            // Calculate the percentage
+            const percentage = Math.round((non_dallas_count / data.length) * 100);
+
+            // Now, assuming you want to display this percentage in the first green box:
+            const greenBox = document.getElementById('ExternalSupport');
+            greenBox.textContent = `${percentage}%`;
+        })
+});
