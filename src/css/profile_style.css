@@ -42,8 +42,7 @@ table {
 }
 #image-container img {
     display: none;
-    width: 80%;
-    height: auto;
+    height: 500px;
 }
 #image-container img.active {
     display: block;
