@@ -45,6 +45,28 @@ function filterRawTable() {
     window.table.setData(filteredData);
 }
 
+function filterContributionsChart() {
+    const cycleFilter = document.getElementById('contributions-chart-cycleFilter').value;
+    let filteredData = [];
+
+    if (cycleFilter === 'all') {
+        filteredData = originalData;
+    } else {
+        const [startYear, endYear] = cycleFilter.split('-').map(year => parseInt(year.trim()));
+
+        const startDate = new Date(startYear, 4, 5); // May 5 of start year
+        const endDate = new Date(endYear, 4, 4, 23, 59, 59, 999); // May 4 of end year, end of the day
+
+        filteredData = originalData.filter(item => {
+            const transactionDate = new Date(item["Transaction Date:"]);
+            return transactionDate >= startDate && transactionDate <= endDate;
+        });
+    }
+
+    // Update the table data
+    window.contributionsChart.setData(filteredData);
+}
+
 // Download button event listener
 document.getElementById('download-csv').addEventListener('click', function() {
     window.table.download("csv", "filtered_data.csv");
@@ -198,58 +220,100 @@ document.addEventListener("DOMContentLoaded", function() {
         })
 });
 
+// Fetch the data and initialize the dropdown and chart
 document.addEventListener("DOMContentLoaded", function() {
     fetch('src/candidates/Atkins/Data/atkins_contributions.json')
         .then(response => response.json())
         .then(data => {
-            // Group records into categories based on increments of 100
-            const categories = {};
-            data.forEach(item => {
-                    const amount = parseInt(item['Amount:']);
-                    const category = Math.floor(amount / 100);
-                    const adjustedCategory = Math.min(category, 9); // Ensure the last category is 9 or less
-                    categories[adjustedCategory] = (categories[adjustedCategory] || 0) + 1;
-            });
+            originalData = data;
+            filteredData = data;
+            generateChart(data);
+        });
+});
 
-            // Extract the counts and labels for the chart
-            const counts = Object.values(categories);
-            const labels = Object.keys(categories).map(category => {
-                const start = parseInt(category) * 100 + 1;
-                const end = (parseInt(category) + 1) * 100;
-                return (category == 9) ? '$901+' : `$${start}-$${end}`;
-            });
-            // Create the bar chart
-            const ctx = document.getElementById('contributionsChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Amount Distribution',
-                        data: counts,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
+function filterContributionsChart(){
+    cycleFilter = document.getElementById("contributions-chart-cycleFilter").value;
+
+    if (cycleFilter === 'all') {
+        filteredData = originalData;
+    } else {
+        const [startYear, endYear] = cycleFilter.split('-').map(year => parseInt(year.trim()));
+
+        const startDate = new Date(startYear, 4, 5); // May 5 of start year
+        const endDate = new Date(endYear, 4, 4, 23, 59, 59, 999); // May 4 of end year, end of the day
+
+        filteredData = originalData.filter(item => {
+            const transactionDate = new Date(item["Transaction Date:"]);
+            return transactionDate >= startDate && transactionDate <= endDate;
+        });
+    }
+
+    generateChart(filteredData);
+}
+
+// Function to filter data by year
+function filterDataByYear(year) {
+    if (year === "all") {
+        filteredData = originalData;
+    } else {
+        filteredData = originalData.filter(item => new Date(item['Transaction Date:']).getFullYear() == year);
+    }
+}
+
+// Function to generate the chart
+function generateChart(data) {
+    // Group records into categories based on increments of 100
+    const categories = {};
+    data.forEach(item => {
+        const amount = parseInt(item['Amount:']);
+        const category = Math.floor(amount / 100);
+        const adjustedCategory = Math.min(category, 11); // Ensure the last category is 9 or less
+        categories[adjustedCategory] = (categories[adjustedCategory] || 0) + 1;
+    });
+
+    // Extract the counts and labels for the chart
+    const counts = Object.values(categories);
+    const labels = Object.keys(categories).map(category => {
+        const start = parseInt(category) * 100 + 1;
+        const end = (parseInt(category) + 1) * 100;
+        return (category == 10) ? '$901-$1,000': (category == 11) ? '$1,000+': `$${start} -$${end}`;
+    });
+
+    // Destroy previous chart if it exists
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    // Create the bar chart
+    const ctx = document.getElementById('contributions-chart').getContext('2d');
+    window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Amount Distribution',
+                data: counts,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Individual Contributions'
+                    }
                 },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Number of Contributions'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Amount Categories'
-                            }
-                        }
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Amount Categories'
                     }
                 }
-            });
-
-        })
-});
+            }
+        }
+    });
+}
