@@ -197,3 +197,59 @@ document.addEventListener("DOMContentLoaded", function() {
             greenBox.textContent = `${percentage}%`;
         })
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('src/candidates/Atkins/Data/atkins_contributions.json')
+        .then(response => response.json())
+        .then(data => {
+            // Group records into categories based on increments of 100
+            const categories = {};
+            data.forEach(item => {
+                    const amount = parseInt(item['Amount:']);
+                    const category = Math.floor(amount / 100);
+                    const adjustedCategory = Math.min(category, 9); // Ensure the last category is 9 or less
+                    categories[adjustedCategory] = (categories[adjustedCategory] || 0) + 1;
+            });
+
+            // Extract the counts and labels for the chart
+            const counts = Object.values(categories);
+            const labels = Object.keys(categories).map(category => {
+                const start = parseInt(category) * 100 + 1;
+                const end = (parseInt(category) + 1) * 100;
+                return (category == 9) ? '$901+' : `$${start}-$${end}`;
+            });
+            // Create the bar chart
+            const ctx = document.getElementById('contributionsChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Amount Distribution',
+                        data: counts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Contributions'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Amount Categories'
+                            }
+                        }
+                    }
+                }
+            });
+
+        })
+});
