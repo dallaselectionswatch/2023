@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('src/candidates/West/Data/west_contributions.json')
+    fetch('src/candidates/Arnold/Data/arnold_contributions.json')
         .then(response => response.json())
         .then(data => {
             // Count the number of records with an amount greater than 1000
