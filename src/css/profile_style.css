@@ -102,3 +102,6 @@ table {
     text-align: center;
     color: #000; /* Adjust as needed */
 }
+#aggregated-contributions-table, #all-contributors-table {
+    height: 400px;
+}
