@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Dallas District 14 - Paul Ridley</title>
+    <title> Dallas District 12 - Cara Mendelsohn</title>
     <link rel="stylesheet" href="src/css/profile_style.css">
     <script src="//d3js.org/d3.v3.min.js"></script>
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
@@ -11,12 +11,10 @@
 </head>
 <body>
     <div class="section" id="profile-pic">
-        <h1>Paul Ridley</h1>
-        <a href="paulridley.html">
-            <img src="src/candidates/Ridley/Visuals/Ridley_headshot.jpeg" alt="Paul Ridley" width="500" height="600">
-        </a>
-        <h2>City Council - District 14<br>(Dallas, Texas)</h2>
-        <p>First Election: 2021 | Next Election: 2025</p>
+        <h1>Cara Mendelsohn</h1>
+        <img src="src/candidates/Mendelsohn/Visuals/Mendelsohn_headshot.jpeg" alt="Cara Mendelsohn" width="500" height="600">
+        <h2>City Council - District 12<br>(Dallas, Texas)</h2>
+        <p>First Election: 2019 | Next Election: 2025</p>
     </div>
 
     <div class="section" id="highlights">
@@ -42,6 +40,7 @@
         <label for="contributions-chart-cycleFilter">Filter by Election Cycle:</label>
         <select id="contributions-chart-cycleFilter" onchange="filterContributionsChart()">
             <option value="all">All Data</option>
+            <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
             <option value="2021-2023" selected>2021-2023</option>
             <option value="2023-2025">2023-2025</option>
@@ -61,11 +60,13 @@
             <option value="2023-2025">2023-2025</option>
             <option value="2021-2023" selected>2021-2023</option>
             <option value="2019-2021">2019-2021</option>
+            <option value="2017-2019">2017-2019</option>
         </select>
         <div id="image-container">
-            <img id="img-2023-2025" src="src/candidates/Ridley/Visuals/PaulRidley_donors_map_2023-2025_highlighted.jpg" alt="2023-2025">
-            <img id="img-2021-2023" src="src/candidates/Ridley/Visuals/PaulRidley_donors_map_2021-2023_highlighted.jpg" alt="2021-2023">
-            <img id="img-2019-2021" src="src/candidates/Ridley/Visuals/PaulRidley_donors_map_2019-2021_highlighted.jpg" alt="2019-2021">
+            <img id="img-2023-2025" src="src/candidates/Mendelsohn/Visuals/CaraMendelsohn_donors_map_2023-2025_highlighted.jpg" alt="2023-2025">
+            <img id="img-2021-2023" src="src/candidates/Mendelsohn/Visuals/CaraMendelsohn_donors_map_2021-2023_highlighted.jpg" alt="2021-2023">
+            <img id="img-2019-2021" src="src/candidates/Mendelsohn/Visuals/CaraMendelsohn_donors_map_2019-2021_highlighted.jpg" alt="2019-2021">
+            <img id="img-2017-2019" src="src/candidates/Mendelsohn/Visuals/CaraMendelsohn_donors_map_2017-2019_highlighted.jpg" alt="2017-2019">
         </div>
 
     </div>
@@ -80,6 +81,7 @@
         <label for="agg-cycleFilter">Filter by Election Cycle:</label>
         <select id="agg-cycleFilter" onchange="filterAggTable()">
             <option value="all">All Data</option>
+            <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
             <option value="2021-2023" selected>2021-2023</option>
             <option value="2023-2025">2023-2025</option>
@@ -94,13 +96,16 @@
         <label for="raw-cycleFilter">Filter by Election Cycle:</label>
         <select id="raw-cycleFilter" onchange="filterRawTable()">
             <option value="all">All Data</option>
+            <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
             <option value="2021-2023" selected>2021-2023</option>
             <option value="2023-2025">2023-2025</option>
         </select>
         <button id="download-csv">Download CSV</button>
         <div id="all-contributors-table"></div>
-        <script src="src/candidates/Ridley/display.js"></script>
+        <script src="src/candidates/Mendelsohn/display.js"></script>
     </div>
+
+
 </body>
 </html>
