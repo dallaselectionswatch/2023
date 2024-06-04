@@ -37,19 +37,6 @@
         </div>
     </div>
 
-    <div class="section" id="contributions-chart-section">
-        <h2>Individual Contributions Breakdown</h2>
-        <label for="contributions-chart-cycleFilter">Filter by Election Cycle:</label>
-        <select id="contributions-chart-cycleFilter" onchange="filterContributionsChart()">
-            <option value="all">All Data</option>
-            <option value="2017 - 2019">2017 - 2019</option>
-            <option value="2019-2021">2019-2021</option>
-            <option value="2021-2023" selected>2021-2023</option>
-            <option value="2023-2025">2023-2025</option>
-        </select>
-        <canvas id="contributions-chart" width="400" height="200"></canvas>
-    </div>
-
     <div class="section" id="donor-map">
         <h2>
             Contributions Across Dallas
@@ -70,7 +57,19 @@
             <img id="img-2019-2021" src="src/candidates/West/Visuals/ChadWest_donors_map_2019-2021_highlighted.jpg" alt="2019-2021">
             <img id="img-2017-2019" src="src/candidates/West/Visuals/ChadWest_donors_map_2017-2019_highlighted.jpg" alt="2017-2019">
         </div>
+    </div>
 
+    <div class="section" id="contributions-chart-section">
+        <h2>Individual Contributions Breakdown</h2>
+        <label for="contributions-chart-cycleFilter">Filter by Election Cycle:</label>
+        <select id="contributions-chart-cycleFilter" onchange="filterContributionsChart()">
+            <option value="all">All Data</option>
+            <option value="2017 - 2019">2017 - 2019</option>
+            <option value="2019-2021">2019-2021</option>
+            <option value="2021-2023" selected>2021-2023</option>
+            <option value="2023-2025">2023-2025</option>
+        </select>
+        <canvas id="contributions-chart" width="400" height="200"></canvas>
     </div>
 
     <div class="section" id="aggregated-contributions">
