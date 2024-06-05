@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Dallas District 7 - Adam Bazaldua</title>
+    <title> Dallas District 13 - Gay Willis</title>
     <link rel="stylesheet" href="src/css/profile_style.css">
     <script src="//d3js.org/d3.v3.min.js"></script>
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="section" id="profile-pic">
-        <h1>Adam Bazaldua</h1>
-        <img src="src/candidates/Bazaldua/Visuals/Bazaldua_headshot.jpeg" alt="Adam Bazaldua" width="500" height="600">
-        <h2>City Council - District 7<br>(Dallas, Texas)</h2>
-        <p>First Election: 2019 | Next Election: 2025</p>
+        <h1>Gay Willis</h1>
+        <img src="src/candidates/Willis/Visuals/Willis_headshot.png" alt="Gay Willis" width="500" height="600">
+        <h2>City Council - District 13<br>(Dallas, Texas)</h2>
+        <p>First Election: 2021 | Next Election: 2025</p>
     </div>
 
     <div class="section" id="highlights">
@@ -40,20 +40,18 @@
             Contributions Across Dallas
         </h2>
         <h4>
-            <i>District 7 highlighted in green</i>
+            <i>District 13 highlighted in green</i>
         </h4>
         <label for="map-cycleFilter">Filter by Election Cycle:</label>
         <select id="map-cycleFilter" onchange="filterImages()">
             <option value="2023-2025">2023-2025</option>
             <option value="2021-2023" selected>2021-2023</option>
             <option value="2019-2021">2019-2021</option>
-            <option value="2017-2019">2017-2019</option>
         </select>
         <div id="image-container">
-            <img id="img-2023-2025" src="src/candidates/Bazaldua/Visuals/AdamBazaldua_donors_map_2023-2025_highlighted.jpg" alt="2023-2025">
-            <img id="img-2021-2023" src="src/candidates/Bazaldua/Visuals/AdamBazaldua_donors_map_2021-2023_highlighted.jpg" alt="2021-2023">
-            <img id="img-2019-2021" src="src/candidates/Bazaldua/Visuals/AdamBazaldua_donors_map_2019-2021_highlighted.jpg" alt="2019-2021">
-            <img id="img-2017-2019" src="src/candidates/Bazaldua/Visuals/AdamBazaldua_donors_map_2017-2019_highlighted.jpg" alt="2017-2019">
+            <img id="img-2023-2025" src="src/candidates/Willis/Visuals/GayWillis_donors_map_2023-2025_highlighted.jpg" alt="2023-2025">
+            <img id="img-2021-2023" src="src/candidates/Willis/Visuals/GayWillis_donors_map_2021-2023_highlighted.jpg" alt="2021-2023">
+            <img id="img-2019-2021" src="src/candidates/Willis/Visuals/GayWillis_donors_map_2019-2021_highlighted.jpg" alt="2019-2021">
         </div>
     </div>
 
@@ -62,9 +60,8 @@
         <label for="contributions-chart-cycleFilter">Filter by Election Cycle:</label>
         <select id="contributions-chart-cycleFilter" onchange="filterContributionsChart()">
             <option value="all">All Data</option>
-            <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
-            <option value="2021-2023" >2021-2023</option>
+            <option value="2021-2023">2021-2023</option>
             <option value="2023-2025">2023-2025</option>
         </select>
         <canvas id="contributions-chart" width="400" height="200"></canvas>
@@ -80,9 +77,8 @@
         <label for="agg-cycleFilter">Filter by Election Cycle:</label>
         <select id="agg-cycleFilter" onchange="filterAggTable()">
             <option value="all">All Data</option>
-            <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
-            <option value="2021-2023">2021-2023</option>
+            <option value="2021-2023" >2021-2023</option>
             <option value="2023-2025">2023-2025</option>
         </select>
         <div id="aggregated-contributions-table"></div>
@@ -95,14 +91,13 @@
         <label for="raw-cycleFilter">Filter by Election Cycle:</label>
         <select id="raw-cycleFilter" onchange="filterRawTable()">
             <option value="all">All Data</option>
-            <option value="2017 - 2019">2017 - 2019</option>
             <option value="2019-2021">2019-2021</option>
-            <option value="2021-2023">2021-2023</option>
+            <option value="2021-2023" >2021-2023</option>
             <option value="2023-2025">2023-2025</option>
         </select>
         <button id="download-csv">Download CSV</button>
         <div id="all-contributors-table"></div>
-        <script src="src/candidates/Bazaldua/display.js"></script>
+        <script src="src/candidates/Willis/display.js"></script>
     </div>
 
 
