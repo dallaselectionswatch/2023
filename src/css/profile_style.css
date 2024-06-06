@@ -66,7 +66,7 @@ table {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 80%; /* Adjust the width as needed */
+    width: 95%; /* Adjust the width as needed */
 }
 
 .box-wrapper {
