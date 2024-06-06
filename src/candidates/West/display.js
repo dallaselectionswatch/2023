@@ -423,3 +423,63 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error fetching data:', error);
     }
 });
+
+// Function to calculate the total sum of contributions that exceed the respective limits
+function calculateExcessContributions(data, startDate, endDate, limitNonPAC, limitPAC) {
+    let excessSum = 0;
+
+    data.forEach(record => {
+        const transactionDate = new Date(record["Transaction Date:"]);
+        if (transactionDate >= startDate && transactionDate <= endDate) {
+            const amount = record["Amount:"];
+            const name = record["Name"];
+            let limit = limitNonPAC;
+
+            // Check if the donor is a PAC
+            if (name.includes('PAC')) {
+                limit = limitPAC;
+            }
+
+            // Calculate the excess amount
+            if (amount > limit) {
+                excessSum += (amount - limit);
+            }
+        }
+    });
+
+    return excessSum;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Fetch and store the data in the global variable if not already fetched
+        if (originalData.length === 0) {
+            originalData = await fetchData('src/candidates/West/Data/west_contributions.json');
+        }
+        // Define election cycles and limits
+        const electionCycles = [
+            { startDate: new Date('2017-05-05'), endDate: new Date('2019-05-04'), limitNonPAC: 1000, limitPAC: 2500 },
+            { startDate: new Date('2019-05-05'), endDate: new Date('2021-05-04'), limitNonPAC: 1000, limitPAC: 2500 },
+            { startDate: new Date('2021-05-05'), endDate: new Date('2023-05-04'), limitNonPAC: 1000, limitPAC: 2500 },
+            { startDate: new Date('2023-05-05'), endDate: new Date('2025-05-04'), limitNonPAC: 1000, limitPAC: 2500 }
+        ];
+
+        // Calculate the excess contributions for each election cycle
+        let totalExcessContributions = 0;
+        electionCycles.forEach(cycle => {
+            totalExcessContributions += calculateExcessContributions(
+                originalData,
+                cycle.startDate,
+                cycle.endDate,
+                cycle.limitNonPAC,
+                cycle.limitPAC
+            );
+        });
+
+        totalExcessContributions = Math.round(totalExcessContributions)
+        const redBox = document.getElementById('AboveLimitSupport');
+        redBox.textContent = `$${totalExcessContributions.toLocaleString()}`;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+});
