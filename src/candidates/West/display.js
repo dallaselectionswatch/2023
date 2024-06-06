@@ -374,7 +374,7 @@ function generateTimelineChart(data) {
         type: 'line',
         data: {
             datasets: [{
-                label: 'Total Transaction Amounts per Day',
+                label: 'Total Contributions',
                 data: aggregatedData,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',

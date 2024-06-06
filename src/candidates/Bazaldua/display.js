@@ -331,3 +331,95 @@ function generateChart(data) {
         }
     });
 }
+
+// Function to fetch JSON data from a file
+async function fetchData(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data;
+}
+
+// Function to aggregate data by date
+function aggregateDataByDate(data) {
+    const aggregatedData = {};
+
+    data.forEach(record => {
+        const date = record["Transaction Date:"].split(' ')[0]; // Extract the date part only
+        const amount = record["Amount:"];
+
+        if (!aggregatedData[date]) {
+            aggregatedData[date] = 0;
+        }
+        aggregatedData[date] += amount;
+    });
+
+    // Convert the aggregated data object into an array and sort it by date
+    return Object.keys(aggregatedData).map(date => ({
+        x: new Date(date),
+        y: aggregatedData[date]
+    })).sort((a, b) => a.x - b.x);
+}
+
+// Function to generate the timeline chart
+function generateTimelineChart(data) {
+    const ctx = document.getElementById('timeline-chart').getContext('2d');
+
+    // Aggregate the data by date
+    const aggregatedData = aggregateDataByDate(data);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Total Contributions',
+                data: aggregatedData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                pointStyle: false,
+                fill: true
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Transaction Date'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Total Amount ($)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Fetch and store the data in the global variable if not already fetched
+        if (originalData.length === 0) {
+            originalData = await fetchData('src/candidates/Bazaldua/Data/bazaldua_contributions.json');
+        }
+        // Generate the timeline chart using the aggregated data
+        generateTimelineChart(originalData);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+});

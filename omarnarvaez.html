@@ -8,6 +8,7 @@
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
@@ -56,6 +57,11 @@
             <img id="img-2019-2021" src="src/candidates/Narvaez/Visuals/OmarNarvaez_donors_map_2019-2021_highlighted.jpg" alt="2019-2021">
             <img id="img-2017-2019" src="src/candidates/Narvaez/Visuals/OmarNarvaez_donors_map_2017-2019_highlighted.jpg" alt="2017-2019">
         </div>
+    </div>
+
+    <div class="section" id="timeline">
+        <h2>Individual Contributions Timeline</h2>
+        <canvas id="timeline-chart" width="400" height="200"></canvas>
     </div>
 
     <div class="section" id="contributions-chart-section">
